@@ -10,6 +10,8 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float JumpPower;
     Rigidbody rigid;
 
+    [SerializeField] GameObject[] Bullet;
+
     // 제한할 카메라 각도 범위
     [SerializeField] float minCamAngle = -30f;
     [SerializeField] float maxCamAngle = 80f;
@@ -27,6 +29,7 @@ public class FirstPersonController : MonoBehaviour
         CamRot();
         Jump();
         Movement();
+        Fire();
     }
 
     void CamRot()
@@ -81,6 +84,14 @@ public class FirstPersonController : MonoBehaviour
             {
                 rigid.AddForce(Vector3.up * JumpPower);
             }
+        }
+    }
+    void Fire()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Instantiate(Bullet[Random.Range(0,Bullet.Length)],cam.position,
+            Quaternion.Euler(new Vector3(cam.eulerAngles.x,transform.eulerAngles.y / 2,0)));
         }
     }
 }
