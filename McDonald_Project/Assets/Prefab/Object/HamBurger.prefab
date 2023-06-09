@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8512198633550633096}
   - component: {fileID: 142724974983372420}
   m_Layer: 0
-  m_Name: Bullet 2
+  m_Name: HamBurger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,8 +224,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.7924528, g: 0.6663293, b: 0.47472408, a: 1}
-      maxColor: {r: 0.8018868, g: 0.7037453, b: 0.4349858, a: 1}
+      minColor: {r: 0.9716981, g: 0.85756046, b: 0.38959593, a: 1}
+      maxColor: {r: 0.6415094, g: 0.502337, b: 0.105909556, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

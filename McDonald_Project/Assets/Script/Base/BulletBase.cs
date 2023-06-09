@@ -7,6 +7,7 @@ public class BulletBase : MonoBehaviour
     public float MoveSpeed;
     public int Damage;
     [SerializeField] GameObject DeathEffect;
+    public SpawnManager.Weakness bulletAttribute;
     void Start()
     {
         Destroy(gameObject, 5f);
@@ -19,7 +20,7 @@ public class BulletBase : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyBase>().Damage(Damage);
+            other.GetComponent<EnemyBase>().Damage(Damage, bulletAttribute);
             Instantiate(DeathEffect,transform.position,Quaternion.identity);
             Destroy(gameObject);
         }

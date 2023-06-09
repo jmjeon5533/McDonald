@@ -16,6 +16,15 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] float minCamAngle = -30f;
     [SerializeField] float maxCamAngle = 80f;
 
+    public enum Weapon
+    {
+        none,
+        Hamberger,
+        Cola,
+        French_fries
+    }
+    public Weapon playerWeapon = Weapon.none;
+
     void Start()
     {
         cam = transform.GetChild(0).transform;
@@ -29,6 +38,7 @@ public class FirstPersonController : MonoBehaviour
         CamRot();
         Jump();
         Movement();
+        WeaponSwap();
         Fire();
     }
 
@@ -86,12 +96,44 @@ public class FirstPersonController : MonoBehaviour
             }
         }
     }
+    void WeaponSwap()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            playerWeapon = Weapon.Hamberger;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            playerWeapon = Weapon.Cola;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            playerWeapon = Weapon.French_fries;
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            playerWeapon = Weapon.none;
+        }
+    }
     void Fire()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(Bullet[Random.Range(0,Bullet.Length)],cam.position,
-            Quaternion.Euler(new Vector3(cam.eulerAngles.x,transform.eulerAngles.y / 2,0)));
+            if (playerWeapon == Weapon.none) return;
+            Instantiate(WeaponInit(playerWeapon), cam.position,
+            Quaternion.Euler(new Vector3(cam.eulerAngles.x, transform.eulerAngles.y / 2, 0)));
         }
+    }
+    GameObject WeaponInit(Weapon weapon)
+    {
+        GameObject returnObj = null;
+        switch (weapon)
+        {
+            case Weapon.none: returnObj = null; break;
+            case Weapon.Hamberger: returnObj = Bullet[0]; break;
+            case Weapon.Cola: returnObj = Bullet[1]; break;
+            case Weapon.French_fries: returnObj = Bullet[2]; break;
+        }
+        return returnObj;
     }
 }

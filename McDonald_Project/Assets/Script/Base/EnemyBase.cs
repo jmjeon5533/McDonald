@@ -31,9 +31,11 @@ public class EnemyBase : MonoBehaviour
     {
         nav.SetDestination(target.position);
     }
-    public void Damage(int damage)
+    public void Damage(int damage, SpawnManager.Weakness Weaked)
     {
-        HP -= damage;
+        if (isWeak(Weaked)) HP -= damage;
+        else HP -= damage / 10;
+
         if (HP <= 0)
         {
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
@@ -41,5 +43,16 @@ public class EnemyBase : MonoBehaviour
             UIManager.instance.ScoreText.text = $"만족시킨 손놈 수 : {UIManager.instance.Score}";
             Destroy(gameObject);
         }
+    }
+    bool isWeak(SpawnManager.Weakness value)
+    {
+        foreach (var w in Weak)
+        {
+            if (w == value)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

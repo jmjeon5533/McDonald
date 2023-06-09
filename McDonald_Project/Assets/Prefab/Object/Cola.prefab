@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8512198633550633096}
   - component: {fileID: 142724974983372420}
   m_Layer: 0
-  m_Name: Bullet 1
+  m_Name: Cola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8512198633550633108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.64, z: 20.849}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224,8 +224,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.8049692, b: 0, a: 1}
-      maxColor: {r: 0.9469855, g: 1, b: 0, a: 1}
+      minColor: {r: 0.1981132, g: 0.111653514, b: 0.06074226, a: 1}
+      maxColor: {r: 0.13207549, g: 0.10511242, b: 0.031772874, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4829,6 +4829,7 @@ MonoBehaviour:
   MoveSpeed: 25
   Damage: 2
   DeathEffect: {fileID: 7922576669992448660, guid: 9660f4a3f7a2d554b959d60a1f9f02c3, type: 3}
+  bulletAttribute: 1
 --- !u!135 &142724974983372420
 SphereCollider:
   m_ObjectHideFlags: 0

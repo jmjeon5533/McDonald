@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8512198633550633096}
   - component: {fileID: 142724974983372420}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: French_fries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,8 +224,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.61268735, g: 1, b: 0, a: 1}
-      maxColor: {r: 0.16409636, g: 1, b: 0, a: 1}
+      minColor: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
+      maxColor: {r: 0.99285436, g: 1, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4829,6 +4829,7 @@ MonoBehaviour:
   MoveSpeed: 25
   Damage: 2
   DeathEffect: {fileID: 7922576669992448660, guid: 9660f4a3f7a2d554b959d60a1f9f02c3, type: 3}
+  bulletAttribute: 2
 --- !u!135 &142724974983372420
 SphereCollider:
   m_ObjectHideFlags: 0
