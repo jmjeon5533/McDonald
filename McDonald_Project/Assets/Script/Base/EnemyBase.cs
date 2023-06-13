@@ -10,6 +10,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] GameObject DeathEffect;
 
     public List<SpawnManager.Weakness> Weak = new List<SpawnManager.Weakness>();
+    public List<GameObject> WeakImage = new List<GameObject>();
     public float HP;
 
     private void Awake()
@@ -23,6 +24,7 @@ public class EnemyBase : MonoBehaviour
         {
             var rand = Random.Range(0, 3);
             Weak.Add((SpawnManager.Weakness)rand);
+
         }
         var bar = Instantiate(SpawnManager.instance.EnemyBarPrefab);
         bar.GetComponent<EnemyBar>().Target = transform;
@@ -30,13 +32,13 @@ public class EnemyBase : MonoBehaviour
     private void Update()
     {
         nav.SetDestination(target.position);
+        HP -= Time.deltaTime;
     }
     public void Damage(int damage, SpawnManager.Weakness Weaked)
     {
-        if (isWeak(Weaked)) HP -= damage;
-        else HP -= damage / 10;
-
-        if (HP <= 0)
+        if (!isWeak(Weaked)) HP -= damage;
+        else SearchWeak(Weaked);
+        if (Weak.Count <= 0)
         {
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
             UIManager.instance.Score += 1;
@@ -54,5 +56,19 @@ public class EnemyBase : MonoBehaviour
             }
         }
         return false;
+    }
+    void SearchWeak(SpawnManager.Weakness value)
+    {
+        for (int i = 0; i < Weak.Count; i++)
+        {
+            if (Weak[i] == value)
+            {
+                Weak.RemoveAt(i);
+                Destroy(WeakImage[i]);
+                WeakImage.RemoveAt(i);
+                return;
+            }
+        }
+
     }
 }

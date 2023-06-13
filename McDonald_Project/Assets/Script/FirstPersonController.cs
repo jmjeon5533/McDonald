@@ -5,10 +5,13 @@ using UnityEngine;
 public class FirstPersonController : MonoBehaviour
 {
     Transform cam;
+    Rigidbody rigid;
     [SerializeField] float CamSpeed;
     [SerializeField] float MoveSpeed;
     [SerializeField] float JumpPower;
-    Rigidbody rigid;
+
+    public float HP;
+    [HideInInspector] public float MaxHp;
 
     [SerializeField] GameObject[] Bullet;
 
@@ -31,6 +34,8 @@ public class FirstPersonController : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        MaxHp = HP;
     }
 
     void Update()
@@ -101,18 +106,22 @@ public class FirstPersonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             playerWeapon = Weapon.Hamberger;
+            UIManager.instance.InitWeaponUI(1);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             playerWeapon = Weapon.Cola;
+            UIManager.instance.InitWeaponUI(2);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             playerWeapon = Weapon.French_fries;
+            UIManager.instance.InitWeaponUI(3);
         }
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             playerWeapon = Weapon.none;
+            UIManager.instance.InitWeaponUI(0);
         }
     }
     void Fire()
@@ -135,5 +144,9 @@ public class FirstPersonController : MonoBehaviour
             case Weapon.French_fries: returnObj = Bullet[2]; break;
         }
         return returnObj;
+    }
+    public void Damage()
+    {
+        
     }
 }

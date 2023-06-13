@@ -16,16 +16,17 @@ public class EnemyBar : MonoBehaviour
         for (int i = 0; i < enemyBase.Weak.Count; i++)
         {
             var weak = Instantiate(SpawnManager.instance.WeakPrefab[(int)enemyBase.Weak[i]], Child[1].transform);
-            var num = 0f;
+            enemyBase.WeakImage.Add(weak);
+            var xPos = 0f;
             if(enemyBase.Weak.Count != 1)
             {
-                num = Mathf.Lerp(1f,-1f,(float)i / (float)(enemyBase.Weak.Count - 1));
+                xPos = Mathf.Lerp(1f,-1f,(float)i / (float)(enemyBase.Weak.Count - 1));
             }
             else
             {
-                num = enemyBase.Weak.Count;
+                xPos = enemyBase.Weak.Count;
             }
-            weak.transform.localPosition = new Vector3(num,0,0);
+            weak.transform.localPosition = new Vector3(xPos,0,0);
         }
     }
     private void Update()
@@ -36,7 +37,7 @@ public class EnemyBar : MonoBehaviour
         }
         else
         {
-            Child[0].transform.localScale = new Vector3((enemyBase.HP / enemyMaxHP) * 1, 0.2f, 1);
+            Child[0].transform.localScale = new Vector3((enemyBase.HP / enemyMaxHP) * 1, 0.1f, 1);
 
             transform.position = Target.position + new Vector3(0, 2, 0);
         }
