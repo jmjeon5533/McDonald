@@ -35,6 +35,9 @@ public class FirstPersonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        playerWeapon = Weapon.none;
+        UIManager.instance.InitWeaponUI(0);
+
         MaxHp = HP;
     }
 
@@ -147,6 +150,6 @@ public class FirstPersonController : MonoBehaviour
     }
     public void Damage()
     {
-        
+
     }
 }
