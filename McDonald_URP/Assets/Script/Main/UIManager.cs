@@ -7,6 +7,7 @@ using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance { get; private set; }
+
     public Text ScoreText;
     [SerializeField] Image HPBar;
     public List<Transform> WeaponUI = new List<Transform>();

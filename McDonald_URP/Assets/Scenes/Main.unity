@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d0c83fea2bc1d4585f1bc175b97915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   ScoreText: {fileID: 5212586379581597733}
   HPBar: {fileID: 5212586378090836673}
   WeaponUI:
@@ -3292,7 +3293,7 @@ GameObject:
   - component: {fileID: 5212586378948172930}
   - component: {fileID: 5212586378948172931}
   m_Layer: 5
-  m_Name: <<Canvas_Main>>
+  m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
