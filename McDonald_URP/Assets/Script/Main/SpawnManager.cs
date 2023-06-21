@@ -1,32 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnManager : MonoBehaviour
 {
-    public static SpawnManager instance {get; private set;}
-    private void Awake() {
+    public static SpawnManager instance { get; private set; }
+    private void Awake()
+    {
         instance = this;
     }
     public FirstPersonController player;
-    
+
     public GameObject EnemyPrefab;
     public GameObject EnemyBarPrefab;
-    public Transform[] SpawnPos;
+    public Transform[] EnemySpawnPos;
+
+    public GameObject[] MapPrefab;
     public Transform canvas;
     [SerializeField] float SpawnTime;
     float Curtime;
 
-    public enum Weakness{
+    public enum Weakness
+    {
         Hamberger,
         Cola,
         French_fries
     }
     public List<GameObject> WeakPrefab = new List<GameObject>();
 
+    private void Start()
+    {
+        int StageNum = SceneManager.instance.StageNum;
+        var map = Instantiate(MapPrefab[StageNum], new Vector3(0, 0, 0), Quaternion.identity);
+        map.GetComponent<NavMeshSurface>().RemoveData();
+        map.GetComponent<NavMeshSurface>().BuildNavMesh();
+    }
     private void Update()
     {
-        Spawn();
+        //Spawn();
     }
     void Spawn()
     {
@@ -34,8 +46,8 @@ public class SpawnManager : MonoBehaviour
         if (Curtime >= SpawnTime)
         {
             Curtime -= SpawnTime;
-            var rand = Random.Range(0, SpawnPos.Length);
-            Instantiate(EnemyPrefab, SpawnPos[rand].position, Quaternion.identity);
+            var rand = Random.Range(0, EnemySpawnPos.Length);
+            Instantiate(EnemyPrefab, EnemySpawnPos[rand].position, Quaternion.identity);
         }
     }
 }

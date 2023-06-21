@@ -24,15 +24,20 @@ public class EnemyBase : MonoBehaviour
         {
             var rand = Random.Range(0, 3);
             Weak.Add((SpawnManager.Weakness)rand);
-
         }
-        var bar = Instantiate(SpawnManager.instance.EnemyBarPrefab);
+        var bar = Instantiate(SpawnManager.instance.EnemyBarPrefab,transform.position,Quaternion.identity);
         bar.GetComponent<EnemyBar>().Target = transform;
     }
     private void Update()
     {
         nav.SetDestination(target.position);
         HP -= Time.deltaTime;
+        if(HP <= 0) isFailed();
+    }
+    void isFailed()
+    {
+        SpawnManager.instance.player.Damage();
+        Destroy(gameObject);
     }
     public void Damage(int damage, SpawnManager.Weakness Weaked)
     {

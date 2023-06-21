@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
+    public Vector3 dir;
     public float MoveSpeed;
     public int Damage;
     [SerializeField] GameObject DeathEffect;
@@ -14,7 +15,7 @@ public class BulletBase : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
+        transform.Translate(dir * MoveSpeed * Time.deltaTime);
     }
     private void OnTriggerEnter(Collider other)
     {

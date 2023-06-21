@@ -14,7 +14,7 @@ public class TitleManager : MonoBehaviour
     {
         CamArm.position = CamPos[Random.Range(0, CamPos.Length)].position;
         StartCoroutine(SceneManager.instance.FadeIn());
-        TitleUI[0].SetActive(true);
+        InitTab(0);
     }
     void Update()
     {
@@ -27,5 +27,9 @@ public class TitleManager : MonoBehaviour
             TitleUI[i].SetActive(false);
         }
         TitleUI[value].SetActive(true);
+    }
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
