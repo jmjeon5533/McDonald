@@ -12,6 +12,7 @@ public class EnemyBase : MonoBehaviour
     public List<SpawnManager.Weakness> Weak = new List<SpawnManager.Weakness>();
     public List<GameObject> WeakImage = new List<GameObject>();
     public float HP;
+    public int damage;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class EnemyBase : MonoBehaviour
         SpawnManager.instance.player.Damage();
         Destroy(gameObject);
     }
-    public void Damage(int damage, SpawnManager.Weakness Weaked)
+    public void Damage(SpawnManager.Weakness Weaked)
     {
         if (!isWeak(Weaked)) HP -= damage;
         else SearchWeak(Weaked);
@@ -75,5 +76,11 @@ public class EnemyBase : MonoBehaviour
             }
         }
 
+    }
+    private void OnTriggerEnter(Collider other) {
+        if(other.CompareTag("Player"))
+        {
+            HP -= damage;
+        }
     }
 }

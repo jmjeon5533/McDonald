@@ -21,6 +21,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] float SpawnTime;
     float Curtime;
 
+    public bool IsStart = false;
+
     public enum Weakness
     {
         Hamberger,
@@ -38,7 +40,7 @@ public class SpawnManager : MonoBehaviour
     }
     private void Update()
     {
-        //Spawn();
+        if(IsStart) Spawn();
     }
     void Spawn()
     {
