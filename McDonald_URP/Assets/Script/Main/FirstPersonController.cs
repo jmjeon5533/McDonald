@@ -128,5 +128,11 @@ public class FirstPersonController : MonoBehaviour
     {
         Heart--;
         UIManager.instance.MinusHeartUI(Heart);
+        if(Heart <= 0)
+        {
+            print("죽었슴");
+            Time.timeScale = 0;
+            return;
+        }
     }
 }

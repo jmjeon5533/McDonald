@@ -27,11 +27,6 @@ public class UIManager : MonoBehaviour
     }
     public void MinusHeartUI(int hp)
     {
-        if(hp <= 0)
-        {
-            print("죽었슴");
-            return;
-        }
         HeartUI[hp].SetActive(false);
     }
     public void InitWeaponUI(int Index)

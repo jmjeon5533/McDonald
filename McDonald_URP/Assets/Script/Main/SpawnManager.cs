@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
 
     public GameObject EnemyPrefab;
     public GameObject EnemyBarPrefab;
-    public Transform[] EnemySpawnPos;
+    public List<Transform> EnemySpawnPos = new List<Transform>();
 
     public GameObject[] MapPrefab;
     public Transform canvas;
@@ -38,7 +38,7 @@ public class SpawnManager : MonoBehaviour
     }
     private void Update()
     {
-        //Spawn();
+        Spawn();
     }
     void Spawn()
     {
@@ -46,7 +46,7 @@ public class SpawnManager : MonoBehaviour
         if (Curtime >= SpawnTime)
         {
             Curtime -= SpawnTime;
-            var rand = Random.Range(0, EnemySpawnPos.Length);
+            var rand = Random.Range(0, EnemySpawnPos.Count);
             Instantiate(EnemyPrefab, EnemySpawnPos[rand].position, Quaternion.identity);
         }
     }
