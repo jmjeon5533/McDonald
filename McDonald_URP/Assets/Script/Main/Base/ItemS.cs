@@ -20,7 +20,7 @@ public class ItemS : MonoBehaviour
         {
             var o = other.GetComponent<FirstPersonController>();
             o.Weapon.Add(weaponType);
-            var Obj = Instantiate(WeaponObj,o.WeaponArm);
+            var Obj = Instantiate(WeaponObj,other.transform.position,Quaternion.identity,o.WeaponArm);
             SpawnManager.instance.player.WeaponObj.Add(Obj);
             var ui = Instantiate(WeaponUI,UIManager.instance.WeaponPanel).transform;
             UIManager.instance.WeaponUI.Add(ui);

@@ -112,9 +112,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b96c1b55e5b93d4aba4e30bae1908a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathEffect: {fileID: 7922576669992448660, guid: 60e4cff0c90f2c840a78ed02dbecac9a, type: 3}
-  Weak: 
-  HP: 10
+  DeathEffect: {fileID: 7922576669992448660, guid: 60e4cff0c90f2c840a78ed02dbecac9a,
+    type: 3}
+  DeathUIEffect: {fileID: 2269703068628722063, guid: d314dec4f211bf24982d3371dd7c8b53,
+    type: 3}
+  Score: 500
+  Weak: []
+  WeakImage: []
+  HP: 20
 --- !u!195 &-3638963666035566607
 NavMeshAgent:
   m_ObjectHideFlags: 0

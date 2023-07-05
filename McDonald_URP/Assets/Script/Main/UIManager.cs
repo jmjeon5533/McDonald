@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
         {
             HeartUI[i].SetActive(true);
         }
+        ScoreText.text = $"{0}";
     }
     public void MinusHeartUI(int hp)
     {

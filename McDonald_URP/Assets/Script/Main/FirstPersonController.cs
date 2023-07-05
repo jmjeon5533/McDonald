@@ -115,13 +115,13 @@ public class FirstPersonController : MonoBehaviour
     }
     void ActiveWeapon(int index)
     {
-        print($"{index}, {WeaponObj.Count}");
         if(index + 1 > WeaponObj.Count) return;
         for (int i = 0; i < WeaponObj.Count; i++)
         {
             WeaponObj[i].SetActive(false);
         }
         WeaponObj[index].SetActive(true);
+        if(Weapon[index] == ItemS.WeaponType.Cola) WeaponObj[index].GetComponent<Cola>().ColaWeapon.Stop();
     }
 
     public void Damage()

@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+[System.Serializable]
+public class Weak
+{
+    public SpawnManager.Weakness Weakness;
+    public int Value;
+    public int MaxValue;
+}
 
 public class SpawnManager : MonoBehaviour
 {
@@ -17,9 +24,13 @@ public class SpawnManager : MonoBehaviour
     public List<Transform> EnemySpawnPos = new List<Transform>();
 
     public GameObject[] MapPrefab;
+    public float[] hardValue;
+    public float[] GameTime;
+    [SerializeField] float min,sec;
     public Transform canvas;
+    
     [SerializeField] float SpawnTime;
-    float Curtime;
+    float SpawnCurtime;
 
     public enum Weakness
     {
@@ -32,6 +43,7 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         int StageNum = SceneManager.instance.StageNum;
+        SpawnTime = SpawnTime * (1 / SpawnManager.instance.hardValue[SceneManager.instance.StageNum]);
         var map = Instantiate(MapPrefab[StageNum], new Vector3(0, 0, 0), Quaternion.identity);
         map.GetComponent<NavMeshSurface>().RemoveData();
         map.GetComponent<NavMeshSurface>().BuildNavMesh();
@@ -42,10 +54,10 @@ public class SpawnManager : MonoBehaviour
     }
     void Spawn()
     {
-        Curtime += Time.deltaTime;
-        if (Curtime >= SpawnTime)
+        SpawnCurtime += Time.deltaTime;
+        if (SpawnCurtime >= SpawnTime)
         {
-            Curtime -= SpawnTime;
+            SpawnCurtime -= SpawnTime;
             var rand = Random.Range(0, EnemySpawnPos.Count);
             Instantiate(EnemyPrefab, EnemySpawnPos[rand].position, Quaternion.identity);
         }

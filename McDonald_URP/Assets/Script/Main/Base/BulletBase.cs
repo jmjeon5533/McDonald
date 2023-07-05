@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
+    public float radius = 1f;
     public Vector3 dir;
     public float MoveSpeed;
     public int Damage;
@@ -16,14 +17,18 @@ public class BulletBase : MonoBehaviour
     void Update()
     {
         transform.Translate(dir * MoveSpeed * Time.deltaTime);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Enemy"))
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+
+        // 충돌한 콜라이더를 처리하는 로직 작성
+        foreach (Collider collider in colliders)
         {
-            other.GetComponent<EnemyBase>().Damage(Damage, bulletAttribute);
-            Instantiate(DeathEffect,transform.position,Quaternion.identity);
-            Destroy(gameObject);
+            // 충돌한 콜라이더에 대한 처리 코드 작성
+            if(collider.CompareTag("Enemy"))
+            {
+                collider.GetComponent<EnemyBase>().Damage(Damage, bulletAttribute);
+                Instantiate(DeathEffect,transform.position,Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
     }
 }

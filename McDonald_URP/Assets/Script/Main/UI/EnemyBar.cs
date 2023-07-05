@@ -15,7 +15,7 @@ public class EnemyBar : MonoBehaviour
         enemyMaxHP = enemyBase.HP;
         for (int i = 0; i < enemyBase.Weak.Count; i++)
         {
-            var weak = Instantiate(SpawnManager.instance.WeakPrefab[(int)enemyBase.Weak[i]], Child[1].transform);
+            var weak = Instantiate(SpawnManager.instance.WeakPrefab[(int)enemyBase.Weak[i].Weakness], Child[1].transform);
             enemyBase.WeakImage.Add(weak);
             var xPos = 0f;
             if(enemyBase.Weak.Count != 1)
