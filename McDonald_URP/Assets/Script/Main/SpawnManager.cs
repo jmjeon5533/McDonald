@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class Weak
 {
     public SpawnManager.Weakness Weakness;
-    public int Value;
-    public int MaxValue;
+    public float Value;
+    public float MaxValue;
 }
 
 public class SpawnManager : MonoBehaviour

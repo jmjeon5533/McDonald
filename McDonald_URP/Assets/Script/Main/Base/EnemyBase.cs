@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ParticleSystemJobs;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class EnemyBase : MonoBehaviour
         for (int i = 0; i < Random.Range(1, 4); i++)
         {
             var Weakrand = Random.Range(0, 3); //약점 부여
-            var Valueweak = Random.Range(0, 3); //약점 개수
+            var Valueweak = 1;//Random.Range(0, 3); //약점 개수
             Weak weak = new Weak();
             weak.Weakness = (SpawnManager.Weakness)Weakrand;
             weak.Value = (SpawnManager.Weakness)Weakrand //weakrand가 콜라일 경우 value * 60
@@ -40,6 +41,7 @@ public class EnemyBase : MonoBehaviour
     private void Update()
     {
         nav.SetDestination(target.position);
+        if(SceneManager.instance.isGame)
         HP -= Time.deltaTime;
         if (HP <= 0) isFailed();
     }
@@ -78,10 +80,11 @@ public class EnemyBase : MonoBehaviour
             if (Weak[i].Weakness == value)
             {
                 Weak[i].Value--;
+                InitWeakUI();
                 if (Weak[i].Value <= 0)
                 {
                     Weak.RemoveAt(i);
-                    Instantiate(DeathUIEffect,WeakImage[i].transform.position,Quaternion.identity);
+                    Instantiate(DeathUIEffect, WeakImage[i].transform.position, Quaternion.identity);
                     Destroy(WeakImage[i]);
                     WeakImage.RemoveAt(i);
                 }
@@ -89,9 +92,22 @@ public class EnemyBase : MonoBehaviour
             }
         }
     }
+    void InitWeakUI()
+    {
+        for (int i = 0; i < Weak.Count; i++)
+        {
+            if (Weak[i].Value <= 0 || Weak[i].Weakness != SpawnManager.Weakness.Cola) continue;
+            WeakImage[i].GetComponent<SpriteRenderer>().size
+            = new Vector2(10.24f, Mathf.Lerp(0, 10.24f, (Weak[i].MaxValue - Weak[i].Value) / Weak[i].MaxValue));
+        }
+    }
     private void OnParticleCollision(GameObject other)
     {
-        Damage(0.5f, SpawnManager.Weakness.Cola);
-        Destroy(other);
+        // Apply damage to self
+        float damage = 0.1f; // 대미지 양 (원하는 값으로 수정)
+        SpawnManager.Weakness weakness = SpawnManager.Weakness.Cola; // 적중한 파티클의 약점 (원하는 값으로 수정)
+        Damage(damage, weakness);
     }
+
+
 }

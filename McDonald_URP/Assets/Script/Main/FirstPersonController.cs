@@ -34,10 +34,18 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
-        CamRot();
-        Jump();
-        Movement();
-        InitWeapon();
+        if (SceneManager.instance.isGame)
+        {
+            CamRot();
+            Jump();
+            Movement();
+            InitWeapon();
+        }
+        // else
+        // {
+        //     cam.transform.position = transform.position + new Vector3(0, 7, -6);
+        //     cam.transform.eulerAngles = new Vector3(50, 0, 0);
+        // }
     }
 
     void CamRot()
@@ -100,38 +108,41 @@ public class FirstPersonController : MonoBehaviour
         {
             ActiveWeapon(0);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             ActiveWeapon(1);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha3))
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             ActiveWeapon(2);
         }
-        else if(Input.GetKeyDown(KeyCode.Alpha4))
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             ActiveWeapon(3);
         }
     }
     void ActiveWeapon(int index)
     {
-        if(index + 1 > WeaponObj.Count) return;
+        if (index + 1 > WeaponObj.Count) return;
         for (int i = 0; i < WeaponObj.Count; i++)
         {
             WeaponObj[i].SetActive(false);
         }
         WeaponObj[index].SetActive(true);
-        if(Weapon[index] == ItemS.WeaponType.Cola) WeaponObj[index].GetComponent<Cola>().ColaWeapon.Stop();
+        if (Weapon[index] == ItemS.WeaponType.Cola) WeaponObj[index].GetComponent<Cola>().ColaWeapon.Stop();
     }
 
     public void Damage()
     {
         Heart--;
         UIManager.instance.MinusHeartUI(Heart);
-        if(Heart <= 0)
+        if (Heart <= 0)
         {
             print("죽었슴");
-            Time.timeScale = 0;
+            // SceneManager.instance.isGame = false;
+            // cam.transform.SetParent(null);
+            // rigid.freezeRotation = false;
+            // transform.Rotate(Random.insideUnitSphere * 5);
             return;
         }
     }

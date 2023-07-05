@@ -9,6 +9,7 @@ public class SceneManager : MonoBehaviour
     [SerializeField] Image FadeImage;
     [SerializeField] float FadeSpeed;
     public static SceneManager instance { get; private set; }
+    public bool isGame = false;
     public Transform canvas;
     public int StageNum = 0;
     private void Awake()
@@ -27,6 +28,7 @@ public class SceneManager : MonoBehaviour
     {
         StageNum = index;
         StartCoroutine(Fade2Load("Main"));
+        isGame = true;
     }
     public IEnumerator FadeIn()
     {

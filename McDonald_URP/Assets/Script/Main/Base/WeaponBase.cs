@@ -14,6 +14,7 @@ public abstract class WeaponBase : MonoBehaviour
     }
     void Update()
     {
+        if(SceneManager.instance.isGame)
         Attack();
     }
     protected abstract void Attack();
