@@ -24,10 +24,14 @@ public class SceneManager : MonoBehaviour
     {
         StageNum = 0;
     }
+    public void SceneLoad(int index)
+    {
+        StartCoroutine(Fade2Load(index));
+    }
     public void StageLoad(int index)
     {
         StageNum = index;
-        StartCoroutine(Fade2Load("Main"));
+        StartCoroutine(Fade2Load(1));
         isGame = true;
     }
     public IEnumerator FadeIn()
@@ -41,7 +45,7 @@ public class SceneManager : MonoBehaviour
             if(a <= 0) break;
         }
     }
-    public IEnumerator Fade2Load(string SceneName)
+    public IEnumerator Fade2Load(int index)
     {
         float a = 0;
         while(a < 1)
@@ -51,7 +55,7 @@ public class SceneManager : MonoBehaviour
             FadeImage.color = new Color(0,0,0,a);
             if(a >= 1) break;
         }
-        UnityEngine.SceneManagement.SceneManager.LoadScene(SceneName);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(index);
         StartCoroutine(FadeIn());
     }
 

@@ -9,9 +9,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance { get; private set; }
 
-    public TextMeshPro[] ScoreText;
+    public TextMeshProUGUI[] ScoreText;
     public Transform WeaponPanel;
     public Transform EndPanel;
+    public Button Title, Next;
     public List<Transform> WeaponUI = new List<Transform>();
     public List<GameObject> HeartUI = new List<GameObject>();
     public int Score = 0;
@@ -22,11 +23,18 @@ public class UIManager : MonoBehaviour
     }
     private void Start()
     {
-        for(int i = 0; i < HeartUI.Count; i++)
+        var Scene = SceneManager.instance;
+        for (int i = 0; i < HeartUI.Count; i++)
         {
             HeartUI[i].SetActive(true);
         }
-        foreach(var score in ScoreText) score.text = $"{0}";
+        foreach (var score in ScoreText) score.text = $"{0}";
+        Title.onClick.AddListener(() => { Scene.SceneLoad(0); });
+        Next.onClick.AddListener(() =>
+        {
+            Scene.StageNum++;
+            Scene.SceneLoad(1);
+        });
     }
     public void MinusHeartUI(int hp)
     {
@@ -42,6 +50,6 @@ public class UIManager : MonoBehaviour
     }
     public void UseEndPanel(bool use)
     {
-        EndPanel.DOLocalMoveY(use ? 0 : 380,1).SetEase(Ease.OutBack);
+        EndPanel.DOLocalMoveY(use ? 0 : 380, 1).SetEase(Ease.OutBack);
     }
 }

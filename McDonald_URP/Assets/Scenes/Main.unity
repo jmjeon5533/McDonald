@@ -533,10 +533,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreText:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 908959792}
+  - {fileID: 1864540849}
   WeaponPanel: {fileID: 5212586379214671348}
   EndPanel: {fileID: 698025788}
+  Title: {fileID: 1974792554}
+  Next: {fileID: 782540955}
   WeaponUI: []
   HeartUI:
   - {fileID: 1738063304}
@@ -1085,7 +1087,7 @@ GameObject:
   - component: {fileID: 908959793}
   - component: {fileID: 908959792}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Score1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1967,7 +1969,7 @@ GameObject:
   - component: {fileID: 1864540850}
   - component: {fileID: 1864540849}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Score2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

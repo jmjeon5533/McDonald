@@ -6779,6 +6779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FadeImage: {fileID: 1076702961}
   FadeSpeed: 0.8
+  isGame: 0
   canvas: {fileID: 820532251}
   StageNum: 0
 --- !u!4 &1678076890

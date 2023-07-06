@@ -51,6 +51,8 @@ public class SpawnManager : MonoBehaviour
 
         min = (int)(GameTime[SceneManager.instance.StageNum] / 60);
         sec = GameTime[SceneManager.instance.StageNum] % 60;
+
+        SceneManager.instance.isGame = true;
     }
     private void Update()
     {
