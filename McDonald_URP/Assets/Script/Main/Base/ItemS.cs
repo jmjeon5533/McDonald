@@ -24,6 +24,7 @@ public class ItemS : MonoBehaviour
             SpawnManager.instance.player.WeaponObj.Add(Obj);
             var ui = Instantiate(WeaponUI,UIManager.instance.WeaponPanel).transform;
             UIManager.instance.WeaponUI.Add(ui);
+            o.ActiveWeapon(o.SelectWeaponNum);
             //Instantiate(GetParticle,transform.position,Quaternion.identity);
             Destroy(gameObject);
         }

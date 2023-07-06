@@ -18,6 +18,7 @@ public class FirstPersonController : MonoBehaviour
     [SerializeField] GameObject[] Bullet;
 
     public Transform WeaponArm;
+    public int SelectWeaponNum; //선택한 무기 번호(Alpha N)
 
     // 제한할 카메라 각도 범위
     [SerializeField] float minCamAngle = -30f;
@@ -105,7 +106,11 @@ public class FirstPersonController : MonoBehaviour
     void InitWeapon()
     {
         for(int i = 0; i < 4; i++)
-            if(Input.GetKeyDown((KeyCode)(i + 49))) ActiveWeapon(i);
+            if(Input.GetKeyDown((KeyCode)(i + 49))) 
+            {
+                SelectWeaponNum = i;
+                ActiveWeapon(i);
+            }
         // if (Input.GetKeyDown(KeyCode.Alpha1))
         // {
         //     ActiveWeapon(0);
@@ -123,13 +128,16 @@ public class FirstPersonController : MonoBehaviour
         //     ActiveWeapon(3);
         // }
     }
-    void ActiveWeapon(int index)
+    public void ActiveWeapon(int index)
     {
+        var UI = UIManager.instance;
         if (index + 1 > WeaponObj.Count) return;
         for (int i = 0; i < WeaponObj.Count; i++)
         {
+            UI.WeaponUI[i].GetChild(0).gameObject.SetActive(false);
             WeaponObj[i].SetActive(false);
         }
+        UI.WeaponUI[index].GetChild(0).gameObject.SetActive(true);
         WeaponObj[index].SetActive(true);
         //if (Weapon[index] == ItemS.WeaponType.Cola) WeaponObj[index].GetComponent<Cola>().ColaWeapon.Stop();
     }
