@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance { get; private set; }
 
-    public Text ScoreText;
+    public TextMeshPro[] ScoreText;
     public Transform WeaponPanel;
+    public Transform EndPanel;
     public List<Transform> WeaponUI = new List<Transform>();
     public List<GameObject> HeartUI = new List<GameObject>();
     public int Score = 0;
@@ -24,7 +26,7 @@ public class UIManager : MonoBehaviour
         {
             HeartUI[i].SetActive(true);
         }
-        ScoreText.text = $"{0}";
+        foreach(var score in ScoreText) score.text = $"{0}";
     }
     public void MinusHeartUI(int hp)
     {
@@ -37,5 +39,9 @@ public class UIManager : MonoBehaviour
             WeaponUI[i].DOScale(1f, 0.2f).SetEase(Ease.OutSine);
         }
         WeaponUI[Index].DOScale(1.5f, 0.2f).SetEase(Ease.OutSine);
+    }
+    public void UseEndPanel(bool use)
+    {
+        EndPanel.DOLocalMoveY(use ? 0 : 380,1).SetEase(Ease.OutBack);
     }
 }

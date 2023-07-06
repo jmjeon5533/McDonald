@@ -10,6 +10,7 @@ public class Billboard : MonoBehaviour
     {
         // 카메라의 Transform 컴포넌트를 가져옴
         cameraTransform = Camera.main.transform;
+
     }
 
     private void LateUpdate()

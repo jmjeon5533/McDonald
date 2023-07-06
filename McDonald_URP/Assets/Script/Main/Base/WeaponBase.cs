@@ -18,4 +18,8 @@ public abstract class WeaponBase : MonoBehaviour
         Attack();
     }
     protected abstract void Attack();
+    public void WeaponOff()
+    {
+        
+    }
 }

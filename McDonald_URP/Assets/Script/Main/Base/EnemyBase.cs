@@ -41,8 +41,13 @@ public class EnemyBase : MonoBehaviour
     private void Update()
     {
         nav.SetDestination(target.position);
-        if(SceneManager.instance.isGame)
-        HP -= Time.deltaTime;
+        if (SceneManager.instance.isGame) HP -= Time.deltaTime;
+        else
+        {
+            Instantiate(DeathEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+
         if (HP <= 0) isFailed();
     }
     void isFailed()
@@ -58,7 +63,7 @@ public class EnemyBase : MonoBehaviour
         {
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
             UIManager.instance.Score += Score;
-            UIManager.instance.ScoreText.text = string.Format("{0:N0}", UIManager.instance.Score);
+            foreach(var score in UIManager.instance.ScoreText) score.text = string.Format("{0:N0}", UIManager.instance.Score);
             Destroy(gameObject);
         }
     }

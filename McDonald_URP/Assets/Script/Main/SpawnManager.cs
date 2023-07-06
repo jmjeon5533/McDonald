@@ -19,16 +19,17 @@ public class SpawnManager : MonoBehaviour
     }
     public FirstPersonController player;
 
-    public GameObject EnemyPrefab;
-    public GameObject EnemyBarPrefab;
-    public List<Transform> EnemySpawnPos = new List<Transform>();
+    public GameObject EnemyPrefab; //적 프리팹
+    public GameObject EnemyBarPrefab; //적 UI 프리팹
+    public List<Transform> EnemySpawnPos = new List<Transform>(); //적 소환 위치
 
     public GameObject[] MapPrefab;
     public float[] hardValue;
     public float[] GameTime;
-    [SerializeField] float min,sec;
+    [SerializeField] int min;
+    [SerializeField] float sec;
     public Transform canvas;
-    
+
     [SerializeField] float SpawnTime;
     float SpawnCurtime;
 
@@ -47,10 +48,17 @@ public class SpawnManager : MonoBehaviour
         var map = Instantiate(MapPrefab[StageNum], new Vector3(0, 0, 0), Quaternion.identity);
         map.GetComponent<NavMeshSurface>().RemoveData();
         map.GetComponent<NavMeshSurface>().BuildNavMesh();
+
+        min = (int)(GameTime[SceneManager.instance.StageNum] / 60);
+        sec = GameTime[SceneManager.instance.StageNum] % 60;
     }
     private void Update()
     {
-        Spawn();
+        if (SceneManager.instance.isGame)
+        {
+            Spawn();
+            Timer();
+        }
     }
     void Spawn()
     {
@@ -60,6 +68,39 @@ public class SpawnManager : MonoBehaviour
             SpawnCurtime -= SpawnTime;
             var rand = Random.Range(0, EnemySpawnPos.Count);
             Instantiate(EnemyPrefab, EnemySpawnPos[rand].position, Quaternion.identity);
+        }
+    }
+    void Timer()
+    {
+        sec -= Time.deltaTime;
+        if (sec <= 0)
+        {
+            if (min <= 0)
+            {
+                GameClear();
+                return;
+            }
+            sec = 60;
+            min--;
+        }
+    }
+    public void GameClear()
+    {
+        SceneManager.instance.isGame = false;
+        UIManager.instance.UseEndPanel(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        for(int i = 0; i < player.WeaponObj.Count; i++)
+        {
+            player.WeaponObj[i].SetActive(false);
+        }
+    }
+    public void GameOver()
+    {
+        SceneManager.instance.isGame = false;
+        for(int i = 0; i < player.WeaponObj.Count; i++)
+        {
+            player.WeaponObj[i].SetActive(false);
         }
     }
 }

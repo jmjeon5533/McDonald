@@ -73,8 +73,8 @@ public class FirstPersonController : MonoBehaviour
 
     void Movement()
     {
-        float h = Input.GetAxis("Horizontal") * MoveSpeed * 10 * Time.deltaTime;
-        float v = Input.GetAxis("Vertical") * MoveSpeed * 10 * Time.deltaTime;
+        float h = Input.GetAxisRaw("Horizontal") * MoveSpeed * 10 * Time.deltaTime;
+        float v = Input.GetAxisRaw("Vertical") * MoveSpeed * 10 * Time.deltaTime;
 
         Vector3 forward = transform.forward;
         forward.y = 0;
@@ -104,22 +104,24 @@ public class FirstPersonController : MonoBehaviour
     }
     void InitWeapon()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ActiveWeapon(0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ActiveWeapon(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ActiveWeapon(2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            ActiveWeapon(3);
-        }
+        for(int i = 0; i < 4; i++)
+            if(Input.GetKeyDown((KeyCode)(i + 49))) ActiveWeapon(i);
+        // if (Input.GetKeyDown(KeyCode.Alpha1))
+        // {
+        //     ActiveWeapon(0);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha2))
+        // {
+        //     ActiveWeapon(1);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha3))
+        // {
+        //     ActiveWeapon(2);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.Alpha4))
+        // {
+        //     ActiveWeapon(3);
+        // }
     }
     void ActiveWeapon(int index)
     {
@@ -129,7 +131,7 @@ public class FirstPersonController : MonoBehaviour
             WeaponObj[i].SetActive(false);
         }
         WeaponObj[index].SetActive(true);
-        if (Weapon[index] == ItemS.WeaponType.Cola) WeaponObj[index].GetComponent<Cola>().ColaWeapon.Stop();
+        //if (Weapon[index] == ItemS.WeaponType.Cola) WeaponObj[index].GetComponent<Cola>().ColaWeapon.Stop();
     }
 
     public void Damage()
@@ -139,7 +141,8 @@ public class FirstPersonController : MonoBehaviour
         if (Heart <= 0)
         {
             print("죽었슴");
-            // SceneManager.instance.isGame = false;
+            SceneManager.instance.isGame = false;
+            SpawnManager.instance.GameOver();
             // cam.transform.SetParent(null);
             // rigid.freezeRotation = false;
             // transform.Rotate(Random.insideUnitSphere * 5);
