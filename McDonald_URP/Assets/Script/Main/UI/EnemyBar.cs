@@ -5,17 +5,20 @@ using UnityEngine.UI;
 
 public class EnemyBar : MonoBehaviour
 {
-    public Transform Target;
-    [SerializeField] GameObject[] Child = new GameObject[2];
-    public EnemyBase enemyBase;
+    [HideInInspector] public Transform Target;
+    [SerializeField] Transform foodPos;
+    [SerializeField] SpriteRenderer barGauge;
+    [HideInInspector] public EnemyBase enemyBase;
     private float enemyMaxHP;
+
+
     private void Start()
     {
         enemyBase = Target.GetComponent<EnemyBase>();
         enemyMaxHP = enemyBase.HP;
         for (int i = 0; i < enemyBase.Weak.Count; i++)
         {
-            var weak = Instantiate(SpawnManager.instance.WeakPrefab[(int)enemyBase.Weak[i].Weakness], Child[1].transform);
+            var weak = Instantiate(SpawnManager.instance.WeakPrefab[(int)enemyBase.Weak[i].Weakness], foodPos);
             enemyBase.WeakImage.Add(weak);
             var xPos = 0f;
             if(enemyBase.Weak.Count != 1)
@@ -37,7 +40,7 @@ public class EnemyBar : MonoBehaviour
         }
         else
         {
-            Child[0].transform.localScale = new Vector3((enemyBase.HP / enemyMaxHP) * 1, 1, 1);
+            barGauge.size = new Vector2((enemyBase.HP / enemyMaxHP) * 4.6f, barGauge.size.y);
 
             transform.position = Target.position + new Vector3(0, 2, 0);
         }

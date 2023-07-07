@@ -23,9 +23,10 @@ public class SpawnManager : MonoBehaviour
     public GameObject EnemyBarPrefab; //적 UI 프리팹
     public List<Transform> EnemySpawnPos = new List<Transform>(); //적 소환 위치
 
-    public GameObject[] MapPrefab;
-    public float[] hardValue;
-    public float[] GameTime;
+    public GameObject[] MapPrefab; //맵
+    public float[] hardValue; //난이도
+    public float[] GameTime; //게임 시간
+    public int[] WeakCount; //약점 갯수
     [SerializeField] int min;
     [SerializeField] float sec;
     public Transform canvas;
@@ -36,8 +37,8 @@ public class SpawnManager : MonoBehaviour
     public enum Weakness
     {
         Hamberger,
-        Cola,
-        French_fries
+        French_fries,
+        Cola
     }
     public List<GameObject> WeakPrefab = new List<GameObject>();
 
@@ -91,7 +92,7 @@ public class SpawnManager : MonoBehaviour
     public void GameClear()
     {
         SceneManager.instance.isGame = false;
-        UIManager.UsePanel(UIManager.instance.EndPanel,true,DG.Tweening.Ease.OutBack,1);
+        UIManager.UsePanel(UIManager.instance.ClearPanel,true,DG.Tweening.Ease.OutBack,1);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         for(int i = 0; i < player.WeaponObj.Count; i++)
@@ -102,6 +103,9 @@ public class SpawnManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.instance.isGame = false;
+        UIManager.UsePanel(UIManager.instance.OverPanel,true,DG.Tweening.Ease.OutBack,1);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         for(int i = 0; i < player.WeaponObj.Count; i++)
         {
             player.WeaponObj[i].SetActive(false);

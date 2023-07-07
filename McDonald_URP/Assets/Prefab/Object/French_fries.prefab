@@ -4826,12 +4826,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf211b1a9b93f442b0359675d1bc523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radius: 1
   dir: {x: 0, y: 0, z: 0}
   MoveSpeed: 25
   Damage: 5
   DeathEffect: {fileID: 7922576669992448660, guid: 9660f4a3f7a2d554b959d60a1f9f02c3,
     type: 3}
-  bulletAttribute: 2
+  bulletAttribute: 1
 --- !u!135 &142724974983372420
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class EnemyBase : MonoBehaviour
         target = SpawnManager.instance.player.transform;
         for (int i = 0; i < Random.Range(1, 4); i++)
         {
-            var Weakrand = Random.Range(0, 3); //약점 부여
+            var Weakrand = Random.Range(0, SpawnManager.instance.WeakCount[SceneManager.instance.StageNum]); //약점 부여
             var Valueweak = 1;//Random.Range(0, 3); //약점 개수
             Weak weak = new Weak();
             weak.Weakness = (SpawnManager.Weakness)Weakrand;

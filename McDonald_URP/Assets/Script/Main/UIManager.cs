@@ -12,9 +12,11 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI[] ScoreText;
     public TextMeshProUGUI TimerText;
     public Transform WeaponPanel;
-    public Transform EndPanel;
+    public Transform ClearPanel;
+    public Transform OverPanel;
+    public Button Title1, Title2, Next, Retry;
+
     public Transform PausePanel;
-    public Button Title, Next;
     public List<Transform> WeaponUI = new List<Transform>();
     public List<GameObject> HeartUI = new List<GameObject>();
     public int Score = 0;
@@ -40,13 +42,17 @@ public class UIManager : MonoBehaviour
             HeartUI[i].SetActive(true);
         }
         foreach (var score in ScoreText) score.text = $"{0}";
-        Title.onClick.AddListener(() => { Scene.SceneLoad(0); });
+        Title1.onClick.AddListener(() => { Scene.SceneLoad(0); });
+        Title2.onClick.AddListener(() => { Scene.SceneLoad(0); });
         Next.onClick.AddListener(() =>
         {
             Scene.StageNum++;
             Scene.SceneLoad(1);
         });
-
+        Retry.onClick.AddListener(() =>
+        {
+            Scene.SceneLoad(1);
+        });
         //pauseButton[0].onClick.AddListener();
         pauseButton[2].onClick.AddListener(() =>
         {
