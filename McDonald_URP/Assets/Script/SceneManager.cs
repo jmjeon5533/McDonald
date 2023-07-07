@@ -37,11 +37,13 @@ public class SceneManager : MonoBehaviour
     public IEnumerator FadeIn()
     {
         float a = 1;
+        Time.timeScale = 1;
         while(a > 0)
         {
-            a -= Time.deltaTime * FadeSpeed;
+            a -= Time.unscaledDeltaTime * FadeSpeed;
             yield return null;
             FadeImage.color = new Color(0,0,0,a);
+            print(FadeImage.color.a);
             if(a <= 0) break;
         }
     }
@@ -50,9 +52,10 @@ public class SceneManager : MonoBehaviour
         float a = 0;
         while(a < 1)
         {
-            a += Time.deltaTime * FadeSpeed;
+            a += Time.unscaledDeltaTime * FadeSpeed;
             yield return null;
             FadeImage.color = new Color(0,0,0,a);
+            print(FadeImage.color.a);
             if(a >= 1) break;
         }
         UnityEngine.SceneManagement.SceneManager.LoadScene(index);

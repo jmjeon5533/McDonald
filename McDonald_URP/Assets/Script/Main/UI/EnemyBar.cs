@@ -37,7 +37,7 @@ public class EnemyBar : MonoBehaviour
         }
         else
         {
-            Child[0].transform.localScale = new Vector3((enemyBase.HP / enemyMaxHP) * 1, 0.1f, 1);
+            Child[0].transform.localScale = new Vector3((enemyBase.HP / enemyMaxHP) * 1, 1, 1);
 
             transform.position = Target.position + new Vector3(0, 2, 0);
         }

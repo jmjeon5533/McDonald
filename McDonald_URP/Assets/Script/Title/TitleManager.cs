@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TitleManager : MonoBehaviour
 {
@@ -8,13 +9,20 @@ public class TitleManager : MonoBehaviour
     [SerializeField] Transform[] CamPos;
     [SerializeField] Transform CamArm;
     [SerializeField] float CamRotSpeed;
-
+    [Space(10)]
     [SerializeField] GameObject[] TitleUI;
+    [SerializeField] Button[] StageButton;
     void Start()
     {
         CamArm.position = CamPos[Random.Range(0, CamPos.Length)].position;
         StartCoroutine(SceneManager.instance.FadeIn());
         InitTab(0);
+
+        for(int i = 0; i < StageButton.Length; i++)
+        {
+            var index = i;
+            StageButton[i].onClick.AddListener(()=>SceneManager.instance.StageLoad(index));
+        }
     }
     void Update()
     {

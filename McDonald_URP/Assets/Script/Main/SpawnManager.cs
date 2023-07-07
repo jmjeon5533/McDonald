@@ -43,6 +43,7 @@ public class SpawnManager : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(SceneManager.instance.StageNum);
         int StageNum = SceneManager.instance.StageNum;
         SpawnTime = SpawnTime * (1 / SpawnManager.instance.hardValue[SceneManager.instance.StageNum]);
         var map = Instantiate(MapPrefab[StageNum], new Vector3(0, 0, 0), Quaternion.identity);
@@ -85,11 +86,12 @@ public class SpawnManager : MonoBehaviour
             sec = 60;
             min--;
         }
+        UIManager.instance.TimerText.text = $"{min}:{(int)sec}";
     }
     public void GameClear()
     {
         SceneManager.instance.isGame = false;
-        UIManager.instance.UseEndPanel(true);
+        UIManager.UsePanel(UIManager.instance.EndPanel,true,DG.Tweening.Ease.OutBack,1);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         for(int i = 0; i < player.WeaponObj.Count; i++)
