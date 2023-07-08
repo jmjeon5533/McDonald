@@ -8,8 +8,8 @@ public class EnemyBase : MonoBehaviour
 {
     protected NavMeshAgent nav;
     protected Transform target;
+    public GameObject DeathUIEffect;
     public GameObject DeathEffect;
-    [SerializeField] GameObject DeathUIEffect;
     public int Score;
 
     public List<Weak> Weak = new List<Weak>();
@@ -75,7 +75,7 @@ public class EnemyBase : MonoBehaviour
         UIManager.instance.Score += Score;
         foreach (var score in UIManager.instance.ScoreText) score.text = string.Format("{0:N0}", UIManager.instance.Score);
     }
-    bool isWeak(SpawnManager.Weakness value)
+    protected virtual bool isWeak(SpawnManager.Weakness value)
     {
         for (int i = 0; i < Weak.Count; i++)
         {
@@ -86,7 +86,7 @@ public class EnemyBase : MonoBehaviour
         }
         return false;
     }
-    void SearchWeak(SpawnManager.Weakness value)
+    protected virtual void SearchWeak(SpawnManager.Weakness value)
     {
         for (int i = 0; i < Weak.Count; i++)
         {
@@ -105,7 +105,7 @@ public class EnemyBase : MonoBehaviour
             }
         }
     }
-    void InitWeakUI()
+    protected void InitWeakUI()
     {
         for (int i = 0; i < Weak.Count; i++)
         {
