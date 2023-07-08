@@ -19,20 +19,25 @@ public class SpawnManager : MonoBehaviour
     }
     public FirstPersonController player;
 
-    public GameObject EnemyPrefab; //적 프리팹
+    public GameObject[] EnemyPrefab; //적 프리팹
+    public GameObject[] BossPrefab; //보스 프리팹
     public GameObject EnemyBarPrefab; //적 UI 프리팹
+    public GameObject BossBarPrefab; //보스 UI 프리팹
     public List<Transform> EnemySpawnPos = new List<Transform>(); //적 소환 위치
 
     public GameObject[] MapPrefab; //맵
     public float[] hardValue; //난이도
     public float[] GameTime; //게임 시간
-    public int[] WeakCount; //약점 갯수
+    public int[] EnemyWeakCount; //약점 갯수
+    public int[] BossWeakCount; //보스 약점 갯수
     [SerializeField] int min;
     [SerializeField] float sec;
     public Transform canvas;
 
     [SerializeField] float SpawnTime;
     float SpawnCurtime;
+    GameObject boss;
+    public bool IsBoss = false;
 
     public enum Weakness
     {
@@ -58,7 +63,7 @@ public class SpawnManager : MonoBehaviour
     }
     private void Update()
     {
-        if (SceneManager.instance.isGame)
+        if (SceneManager.instance.isGame && !IsBoss)
         {
             Spawn();
             Timer();
@@ -71,7 +76,7 @@ public class SpawnManager : MonoBehaviour
         {
             SpawnCurtime -= SpawnTime;
             var rand = Random.Range(0, EnemySpawnPos.Count);
-            Instantiate(EnemyPrefab, EnemySpawnPos[rand].position, Quaternion.identity);
+            Instantiate(EnemyPrefab[0], EnemySpawnPos[rand].position, Quaternion.identity);
         }
     }
     void Timer()
@@ -81,7 +86,8 @@ public class SpawnManager : MonoBehaviour
         {
             if (min <= 0)
             {
-                GameClear();
+                if(boss == null) StartCoroutine(SummonBoss());
+                else return;
                 return;
             }
             sec = 60;
@@ -89,13 +95,25 @@ public class SpawnManager : MonoBehaviour
         }
         UIManager.instance.TimerText.text = $"{min}:{(int)sec}";
     }
+    private IEnumerator SummonBoss()
+    {
+        if(BossPrefab[SceneManager.instance.StageNum] != null)
+        {
+            IsBoss = true;
+            UIManager.instance.TimerText.text = "보스 출현!";
+            var rand = Random.Range(0, EnemySpawnPos.Count);
+            boss = Instantiate(BossPrefab[SceneManager.instance.StageNum], EnemySpawnPos[rand].position, Quaternion.identity);
+            yield return new WaitUntil(() => boss == null);
+            GameClear();
+        }
+    }
     public void GameClear()
     {
         SceneManager.instance.isGame = false;
-        UIManager.UsePanel(UIManager.instance.ClearPanel,true,DG.Tweening.Ease.OutBack,1);
+        UIManager.UsePanel(UIManager.instance.ClearPanel, true, DG.Tweening.Ease.OutBack, 1);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        for(int i = 0; i < player.WeaponObj.Count; i++)
+        for (int i = 0; i < player.WeaponObj.Count; i++)
         {
             player.WeaponObj[i].SetActive(false);
         }
@@ -103,10 +121,10 @@ public class SpawnManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.instance.isGame = false;
-        UIManager.UsePanel(UIManager.instance.OverPanel,true,DG.Tweening.Ease.OutBack,1);
+        UIManager.UsePanel(UIManager.instance.OverPanel, true, DG.Tweening.Ease.OutBack, 1);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        for(int i = 0; i < player.WeaponObj.Count; i++)
+        for (int i = 0; i < player.WeaponObj.Count; i++)
         {
             player.WeaponObj[i].SetActive(false);
         }

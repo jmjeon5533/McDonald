@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyBar : MonoBehaviour
+public class EnemySpriteBar : MonoBehaviour
 {
     [HideInInspector] public Transform Target;
     [SerializeField] Transform foodPos;
     [SerializeField] SpriteRenderer barGauge;
     [HideInInspector] public EnemyBase enemyBase;
-    private float enemyMaxHP;
+    [HideInInspector] 
 
-
-    private void Start()
+    void Start()
     {
         enemyBase = Target.GetComponent<EnemyBase>();
-        enemyMaxHP = enemyBase.HP;
+        enemyBase.enemyMaxLimit = enemyBase.limit;
+        InitWeakUI();
+    }
+    public void InitWeakUI()
+    {
         for (int i = 0; i < enemyBase.Weak.Count; i++)
         {
             var weak = Instantiate(SpawnManager.instance.WeakPrefab[(int)enemyBase.Weak[i].Weakness], foodPos);
@@ -32,7 +35,7 @@ public class EnemyBar : MonoBehaviour
             weak.transform.localPosition = new Vector3(xPos,0,0);
         }
     }
-    private void Update()
+    void Update()
     {
         if (Target == null)
         {
@@ -40,7 +43,7 @@ public class EnemyBar : MonoBehaviour
         }
         else
         {
-            barGauge.size = new Vector2((enemyBase.HP / enemyMaxHP) * 4.6f, barGauge.size.y);
+            barGauge.size = new Vector2((enemyBase.limit / enemyBase.enemyMaxLimit) * 4.6f, barGauge.size.y);
 
             transform.position = Target.position + new Vector3(0, 2, 0);
         }

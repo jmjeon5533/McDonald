@@ -6,27 +6,39 @@ using UnityEngine.ParticleSystemJobs;
 
 public class EnemyBase : MonoBehaviour
 {
-    NavMeshAgent nav;
-    Transform target;
-    [SerializeField] GameObject DeathEffect;
+    protected NavMeshAgent nav;
+    protected Transform target;
+    public GameObject DeathEffect;
     [SerializeField] GameObject DeathUIEffect;
     public int Score;
 
     public List<Weak> Weak = new List<Weak>();
     public List<GameObject> WeakImage = new List<GameObject>();
-    public float HP;
+    public float limit;
+
+    protected int WeakCount;
+    protected bool isRand = true;
+    protected GameObject Bar; //enemyUIBar
+    public float enemyMaxLimit; //최대 한계(UI용)
 
     private void Awake()
     {
         nav = GetComponent<NavMeshAgent>();
     }
-    private void Start()
+    protected virtual void Start()
     {
         target = SpawnManager.instance.player.transform;
-        for (int i = 0; i < Random.Range(1, 4); i++)
+        InitWeak();
+        limit = limit * (1 / SpawnManager.instance.hardValue[SceneManager.instance.StageNum]);
+    }
+    protected void InitWeak()
+    {
+        var repeat = isRand ? Random.Range(1, WeakCount + 1) : WeakCount;
+        for (int i = 0; i < repeat; i++)
         {
-            var Weakrand = Random.Range(0, SpawnManager.instance.WeakCount[SceneManager.instance.StageNum]); //약점 부여
-            var Valueweak = 1;//Random.Range(0, 3); //약점 개수
+            var Weakrand = Random.Range(0, SpawnManager.instance.EnemyWeakCount[SceneManager.instance.StageNum]); //약점 부여
+            var Valueweak = 1; //Random.Range(0, 3); //약점 개수
+            print($"{gameObject.name},{Weakrand}:{repeat}");
             Weak weak = new Weak();
             weak.Weakness = (SpawnManager.Weakness)Weakrand;
             weak.Value = (SpawnManager.Weakness)Weakrand //weakrand가 콜라일 경우 value * 60
@@ -34,38 +46,34 @@ public class EnemyBase : MonoBehaviour
             weak.MaxValue = weak.Value;
             Weak.Add(weak);
         }
-        var bar = Instantiate(SpawnManager.instance.EnemyBarPrefab, transform.position, Quaternion.identity);
-        bar.GetComponent<EnemyBar>().Target = transform;
-        HP = HP * (1 / SpawnManager.instance.hardValue[SceneManager.instance.StageNum]);
     }
     private void Update()
     {
         nav.SetDestination(target.position);
-        if (SceneManager.instance.isGame) HP -= Time.deltaTime;
+        if (SceneManager.instance.isGame) limit -= Time.deltaTime;
         else
         {
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
-        if (HP <= 0) isFailed();
+        if (limit <= 0) isFailed();
     }
-    void isFailed()
+    protected virtual void isFailed()
     {
         SpawnManager.instance.player.Damage();
         Destroy(gameObject);
     }
     public void Damage(float damage, SpawnManager.Weakness Weaked)
     {
-        if (!isWeak(Weaked)) HP -= damage;
+        if (!isWeak(Weaked)) limit -= damage;
         else SearchWeak(Weaked);
-        if (Weak.Count <= 0)
-        {
-            Instantiate(DeathEffect, transform.position, Quaternion.identity);
-            UIManager.instance.Score += Score;
-            foreach(var score in UIManager.instance.ScoreText) score.text = string.Format("{0:N0}", UIManager.instance.Score);
-            Destroy(gameObject);
-        }
+        if (Weak.Count <= 0) WeakOut();
+    }
+    protected virtual void WeakOut()
+    {
+        UIManager.instance.Score += Score;
+        foreach (var score in UIManager.instance.ScoreText) score.text = string.Format("{0:N0}", UIManager.instance.Score);
     }
     bool isWeak(SpawnManager.Weakness value)
     {

@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7321621126747365468}
   - component: {fileID: 3581882082173024445}
   - component: {fileID: 1593268958993184882}
-  - component: {fileID: 348531378138391620}
+  - component: {fileID: 7483953077547462951}
   - component: {fileID: -3638963666035566607}
   - component: {fileID: 4657311790353760203}
-  - component: {fileID: 5081608479406113341}
+  - component: {fileID: 5635164708171210913}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Boss1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4485867744207864236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.2, y: 0.83, z: 17.57}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4485867744207864236}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &1593268958993184882
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &348531378138391620
+--- !u!114 &7483953077547462951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,17 +96,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4485867744207864236}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b96c1b55e5b93d4aba4e30bae1908a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1966e561ed5356745a023fc0430fe5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DeathEffect: {fileID: 7922576669992448660, guid: 60e4cff0c90f2c840a78ed02dbecac9a,
     type: 3}
   DeathUIEffect: {fileID: 2269703068628722063, guid: d314dec4f211bf24982d3371dd7c8b53,
     type: 3}
-  Score: 500
+  Score: 5000
   Weak: []
   WeakImage: []
   limit: 20
+  enemyMaxLimit: 0
+  HP: 5
 --- !u!195 &-3638963666035566607
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -117,7 +119,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -125,8 +127,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!54 &4657311790353760203
@@ -145,8 +147,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!136 &5081608479406113341
-CapsuleCollider:
+--- !u!65 &5635164708171210913
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -155,7 +157,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

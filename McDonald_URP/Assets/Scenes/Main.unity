@@ -3816,9 +3816,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1308178716}
-  EnemyPrefab: {fileID: 4485867744207864236, guid: b4e5e143c643725479493dca1054c79d,
-    type: 3}
+  EnemyPrefab:
+  - {fileID: 4485867744207864236, guid: b4e5e143c643725479493dca1054c79d, type: 3}
+  BossPrefab:
+  - {fileID: 0}
+  - {fileID: 4485867744207864236, guid: ea6c67e20b54be747b8da7411157e2c1, type: 3}
   EnemyBarPrefab: {fileID: 6223931534171893246, guid: bf7f81d2c8aecee43bee34e6834e8848,
+    type: 3}
+  BossBarPrefab: {fileID: 6223931534171893246, guid: 464b932669cdf254788830f43229062d,
     type: 3}
   EnemySpawnPos: []
   MapPrefab:
@@ -3830,14 +3835,16 @@ MonoBehaviour:
   - 1
   - 1.3
   GameTime:
-  - 40
+  - 10
+  - 1
   - 90
-  - 90
-  WeakCount: 020000000200000003000000
+  EnemyWeakCount: 020000000200000003000000
+  BossWeakCount: 00000000070000000a000000
   min: 0
   sec: 0
   canvas: {fileID: 5212586378948172940}
   SpawnTime: 2
+  IsBoss: 0
   WeakPrefab:
   - {fileID: 1629662969849762511, guid: 84a1312968073bb43898dd94a9d59c10, type: 3}
   - {fileID: 8320742455843822527, guid: a352a647198a6d045922680f6b947a3d, type: 3}
