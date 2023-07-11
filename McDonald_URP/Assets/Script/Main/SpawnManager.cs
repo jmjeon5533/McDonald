@@ -86,8 +86,8 @@ public class SpawnManager : MonoBehaviour
         {
             if (min <= 0)
             {
+                if(BossPrefab[SceneManager.instance.StageNum] == null) { GameClear(); return;}
                 if(boss == null) StartCoroutine(SummonBoss());
-                else return;
                 return;
             }
             sec = 60;

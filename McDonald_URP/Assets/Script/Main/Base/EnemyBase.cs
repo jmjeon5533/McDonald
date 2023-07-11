@@ -33,7 +33,7 @@ public class EnemyBase : MonoBehaviour
     }
     protected void InitWeak()
     {
-        var repeat = isRand ? Random.Range(1, WeakCount + 1) : WeakCount;
+        var repeat = isRand ? Random.Range(1, 4) : WeakCount;
         for (int i = 0; i < repeat; i++)
         {
             var Weakrand = Random.Range(0, SpawnManager.instance.EnemyWeakCount[SceneManager.instance.StageNum]); //약점 부여
