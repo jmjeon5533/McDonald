@@ -47,6 +47,18 @@ public class SceneManager : MonoBehaviour
             if(a <= 0) break;
         }
     }
+    public IEnumerator FadeOut()
+    {
+        float a = 0;
+        while(a < 1)
+        {
+            a += Time.unscaledDeltaTime * FadeSpeed;
+            yield return null;
+            FadeImage.color = new Color(0,0,0,a);
+            print(FadeImage.color.a);
+            if(a >= 1) break;
+        }
+    }
     public IEnumerator Fade2Load(int index)
     {
         float a = 0;
