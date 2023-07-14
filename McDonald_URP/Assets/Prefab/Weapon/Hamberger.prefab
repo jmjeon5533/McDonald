@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8804362390958309901}
   - component: {fileID: -2562354217439024827}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hamberger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2674265433618226165}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,6 +154,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Burger 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2ab2ff62737e7b54880192ab62f9c3a7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ab2ff62737e7b54880192ab62f9c3a7, type: 3}
