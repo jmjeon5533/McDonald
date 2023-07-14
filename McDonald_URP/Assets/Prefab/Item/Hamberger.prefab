@@ -115,4 +115,4 @@ MonoBehaviour:
     type: 3}
   WeaponUI: {fileID: 4953315426043552380, guid: 1bf49c4d77b951c4ea201f4062df0dc8,
     type: 3}
-  GetParticle: {fileID: 0}
+  PickSound: {fileID: 8300000, guid: 10c2d0f9e2a2d804e83a57632020e5d8, type: 3}

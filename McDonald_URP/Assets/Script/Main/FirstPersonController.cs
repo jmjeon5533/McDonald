@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
 {
-    Transform cam;
+    public Transform cam;
     Rigidbody rigid;
     [SerializeField] float CamSpeed;
     [SerializeField] float MoveSpeed;
     [SerializeField] float JumpPower;
-
+    
+    public float CamTickPos = 0;
     public int Heart = 4;
 
     public List<ItemS.WeaponType> Weapon = new List<ItemS.WeaponType>();
@@ -55,7 +56,7 @@ public class FirstPersonController : MonoBehaviour
         float v = Input.GetAxis("Mouse Y") * CamSpeed * Time.deltaTime;
 
         // 현재 카메라의 각도
-        Vector3 currentRotation = cam.localEulerAngles;
+        Vector3 currentRotation = cam.localEulerAngles - new Vector3(CamTickPos,0,0);
         float newRotationX = currentRotation.x - v;
 
         // 각도를 -180 ~ 180 범위로 조정
@@ -68,7 +69,7 @@ public class FirstPersonController : MonoBehaviour
         newRotationX = Mathf.Clamp(newRotationX, minCamAngle, maxCamAngle);
 
         // 카메라 회전 적용
-        cam.localEulerAngles = new Vector3(newRotationX, 0f, 0f);
+        cam.localEulerAngles = new Vector3(newRotationX - CamTickPos, 0f, 0f);
         transform.Rotate(new Vector3(0, h, 0));
     }
 
@@ -111,22 +112,6 @@ public class FirstPersonController : MonoBehaviour
                 SelectWeaponNum = i;
                 ActiveWeapon(i);
             }
-        // if (Input.GetKeyDown(KeyCode.Alpha1))
-        // {
-        //     ActiveWeapon(0);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Alpha2))
-        // {
-        //     ActiveWeapon(1);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Alpha3))
-        // {
-        //     ActiveWeapon(2);
-        // }
-        // else if (Input.GetKeyDown(KeyCode.Alpha4))
-        // {
-        //     ActiveWeapon(3);
-        // }
     }
     public void ActiveWeapon(int index)
     {
@@ -139,6 +124,7 @@ public class FirstPersonController : MonoBehaviour
         }
         UI.WeaponUI[index].GetChild(0).gameObject.SetActive(true);
         WeaponObj[index].SetActive(true);
+        CamTickPos = 0;
         //if (Weapon[index] == ItemS.WeaponType.Cola) WeaponObj[index].GetComponent<Cola>().ColaWeapon.Stop();
     }
 

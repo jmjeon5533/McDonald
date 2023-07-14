@@ -27,9 +27,10 @@ public class EnemyBase : MonoBehaviour
     }
     protected virtual void Start()
     {
-        target = SpawnManager.instance.player.transform;
+        target = SpawnManager.instance.Ronald.transform;
         InitWeak();
         limit = limit * (1 / SpawnManager.instance.hardValue[SceneManager.instance.StageNum]);
+        nav.SetDestination(target.position);
     }
     protected void InitWeak()
     {
@@ -38,7 +39,6 @@ public class EnemyBase : MonoBehaviour
         {
             var Weakrand = Random.Range(0, SpawnManager.instance.EnemyWeakCount[SceneManager.instance.StageNum]); //약점 부여
             var Valueweak = 1; //Random.Range(0, 3); //약점 개수
-            print($"{gameObject.name},{Weakrand}:{repeat}");
             Weak weak = new Weak();
             weak.Weakness = (SpawnManager.Weakness)Weakrand;
             weak.Value = (SpawnManager.Weakness)Weakrand //weakrand가 콜라일 경우 value * 60
@@ -49,7 +49,6 @@ public class EnemyBase : MonoBehaviour
     }
     private void Update()
     {
-        nav.SetDestination(target.position);
         if (SceneManager.instance.isGame) limit -= Time.deltaTime;
         else
         {
@@ -57,7 +56,7 @@ public class EnemyBase : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (limit <= 0) isFailed();
+        if (limit <= 0 || Vector3.Distance(transform.position,target.position) <= 1.5f) isFailed();
     }
     protected virtual void isFailed()
     {

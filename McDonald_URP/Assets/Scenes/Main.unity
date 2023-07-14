@@ -3003,7 +3003,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308178715}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3827,6 +3827,7 @@ MonoBehaviour:
   BossBarPrefab: {fileID: 6223931534171893246, guid: 464b932669cdf254788830f43229062d,
     type: 3}
   EnemySpawnPos: []
+  Ronald: {fileID: 0}
   MapPrefab:
   - {fileID: 6694510963969080675, guid: 3a47d26d956c6334b9a33ea88f16b7ed, type: 3}
   - {fileID: 6694510963969080675, guid: 72d2666160e45984ea78c342e6ee21fd, type: 3}

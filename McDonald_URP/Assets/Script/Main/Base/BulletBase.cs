@@ -10,13 +10,13 @@ public class BulletBase : MonoBehaviour
     public int Damage;
     [SerializeField] GameObject DeathEffect;
     public SpawnManager.Weakness bulletAttribute;
-    void Start()
+    protected virtual void Start()
     {
         Destroy(gameObject, 5f);
     }
-    void Update()
+    protected virtual void Update()
     {
-        transform.Translate(dir * MoveSpeed * Time.deltaTime);
+        transform.position += (dir * MoveSpeed * Time.deltaTime);
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
 
         // 충돌한 콜라이더를 처리하는 로직 작성

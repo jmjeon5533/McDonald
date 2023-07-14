@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Hamberger : WeaponBase
 {
+    [SerializeField] Transform Muzzle;
+    [SerializeField] GameObject BulletParticle;
     protected override void Attack()
     {
         if (Input.GetMouseButtonDown(0))
@@ -23,6 +25,9 @@ public class Hamberger : WeaponBase
                 BulletBase bulletMovement = bullet.GetComponent<BulletBase>();
                 bulletMovement.dir = direction;
             }
+            Instantiate(BulletParticle,Muzzle.transform.position,
+            player.rotation);
+            base.Attack();
         }
     }
 }

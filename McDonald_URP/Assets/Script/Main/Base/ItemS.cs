@@ -13,7 +13,7 @@ public class ItemS : MonoBehaviour
     public WeaponType weaponType;
     [SerializeField] GameObject WeaponObj;
     [SerializeField] GameObject WeaponUI;
-    [SerializeField] GameObject GetParticle;
+    [SerializeField] AudioClip PickSound;
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -25,7 +25,7 @@ public class ItemS : MonoBehaviour
             var ui = Instantiate(WeaponUI,UIManager.instance.WeaponPanel).transform;
             UIManager.instance.WeaponUI.Add(ui);
             o.ActiveWeapon(o.SelectWeaponNum);
-            //Instantiate(GetParticle,transform.position,Quaternion.identity);
+            SoundManager.instance.SetAudio(PickSound,SoundManager.SoundState.SFX);
             Destroy(gameObject);
         }
     }

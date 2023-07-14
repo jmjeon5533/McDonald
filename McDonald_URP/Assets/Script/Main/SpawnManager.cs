@@ -24,6 +24,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject EnemyBarPrefab; //적 UI 프리팹
     public GameObject BossBarPrefab; //보스 UI 프리팹
     public List<Transform> EnemySpawnPos = new List<Transform>(); //적 소환 위치
+    public Transform Ronald; //마스코트 = 지켜야함
 
     public GameObject[] MapPrefab; //맵
     public float[] hardValue; //난이도

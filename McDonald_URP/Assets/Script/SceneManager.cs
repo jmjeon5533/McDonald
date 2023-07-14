@@ -43,7 +43,6 @@ public class SceneManager : MonoBehaviour
             a -= Time.unscaledDeltaTime * FadeSpeed;
             yield return null;
             FadeImage.color = new Color(0,0,0,a);
-            print(FadeImage.color.a);
             if(a <= 0) break;
         }
     }
@@ -55,7 +54,6 @@ public class SceneManager : MonoBehaviour
             a += Time.unscaledDeltaTime * FadeSpeed;
             yield return null;
             FadeImage.color = new Color(0,0,0,a);
-            print(FadeImage.color.a);
             if(a >= 1) break;
         }
     }
@@ -67,7 +65,6 @@ public class SceneManager : MonoBehaviour
             a += Time.unscaledDeltaTime * FadeSpeed;
             yield return null;
             FadeImage.color = new Color(0,0,0,a);
-            print(FadeImage.color.a);
             if(a >= 1) break;
         }
         UnityEngine.SceneManagement.SceneManager.LoadScene(index);
