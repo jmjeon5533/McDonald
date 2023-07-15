@@ -27,7 +27,6 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        cam = transform.GetChild(0).transform;
         rigid = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

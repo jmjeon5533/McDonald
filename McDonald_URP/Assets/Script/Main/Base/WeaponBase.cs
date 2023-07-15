@@ -14,7 +14,7 @@ public abstract class WeaponBase : MonoBehaviour
         player = SpawnManager.instance.player.transform;
         transform.localPosition = new Vector3(0, 0, 0);
         transform.localEulerAngles = new Vector3(0, 0, 0);
-        weaponArm = player.GetChild(0).GetChild(0);
+        weaponArm = player.GetComponent<FirstPersonController>().WeaponArm;
     }
     void Update()
     {
@@ -24,7 +24,7 @@ public abstract class WeaponBase : MonoBehaviour
     protected virtual void Attack()
     {
         StartCoroutine(CamTick());
-        SoundManager.instance.SetAudio(FireSound,SoundManager.SoundState.SFX);
+        SoundManager.instance.SetAudio(FireSound,SoundManager.SoundState.SFX, false);
     }
     public IEnumerator CamTick()
     {

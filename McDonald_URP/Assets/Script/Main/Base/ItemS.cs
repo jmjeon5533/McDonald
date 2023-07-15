@@ -10,6 +10,11 @@ public class ItemS : MonoBehaviour
         Cola,
         French_fries
     }
+    private void Update()
+    {
+        transform.Rotate(Vector3.up * 25f * Time.deltaTime);
+    }
+
     public WeaponType weaponType;
     [SerializeField] GameObject WeaponObj;
     [SerializeField] GameObject WeaponUI;
@@ -25,7 +30,7 @@ public class ItemS : MonoBehaviour
             var ui = Instantiate(WeaponUI,UIManager.instance.WeaponPanel).transform;
             UIManager.instance.WeaponUI.Add(ui);
             o.ActiveWeapon(o.SelectWeaponNum);
-            SoundManager.instance.SetAudio(PickSound,SoundManager.SoundState.SFX);
+            SoundManager.instance.SetAudio(PickSound,SoundManager.SoundState.SFX, false);
             Destroy(gameObject);
         }
     }

@@ -3346,6 +3346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SoundObject: {fileID: 8303700292612000068, guid: 03212b1701b6fc747b728753bfc286cd,
     type: 3}
+  BGM:
+  - {fileID: 8300000, guid: 60dd9fb6945b743499381137e9a4dc71, type: 3}
   BGMVolume: 0.5
   SFXVolume: 0.5
 --- !u!4 &780794982
