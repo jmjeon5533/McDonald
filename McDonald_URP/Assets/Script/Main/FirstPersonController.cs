@@ -123,6 +123,7 @@ public class FirstPersonController : MonoBehaviour
         }
         UI.WeaponUI[index].GetChild(0).gameObject.SetActive(true);
         WeaponObj[index].SetActive(true);
+        UIManager.instance.InitWeaponUI(index);
         CamTickPos = 0;
         //if (Weapon[index] == ItemS.WeaponType.Cola) WeaponObj[index].GetComponent<Cola>().ColaWeapon.Stop();
     }

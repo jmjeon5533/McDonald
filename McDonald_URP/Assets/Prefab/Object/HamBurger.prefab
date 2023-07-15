@@ -4755,7 +4755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5adbaae5b365274c9b65364948b7b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
+  radius: 0.4
   dir: {x: 0, y: 0, z: 0}
   MoveSpeed: 25
   Damage: 5

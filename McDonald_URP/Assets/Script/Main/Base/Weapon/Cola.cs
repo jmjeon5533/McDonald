@@ -28,5 +28,15 @@ public class Cola : WeaponBase
         ColaWeapon.Stop();
         ColaWeapon.transform.localRotation = Quaternion.Euler(new Vector3(-2,-2.5f));
     }
-    
+    public override IEnumerator CamTick()
+    {
+        var controller = player.GetComponent<FirstPersonController>();
+        controller.CamTickPos = 75f * Time.deltaTime;
+        while (controller.CamTickPos >= -0.75f)
+        {
+            controller.CamTickPos -= Time.deltaTime * recovery;
+            yield return null;
+        }
+        controller.CamTickPos = 0 * Time.deltaTime;
+    }
 }

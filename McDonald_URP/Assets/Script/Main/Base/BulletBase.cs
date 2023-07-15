@@ -29,6 +29,14 @@ public class BulletBase : MonoBehaviour
                 Instantiate(DeathEffect,transform.position,Quaternion.identity);
                 Destroy(gameObject);
             }
+            else if(collider.CompareTag("Map"))
+            {
+                Instantiate(DeathEffect,transform.position,Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
+    }
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(transform.position,radius);    
     }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Hamberger : WeaponBase
 {
-    [SerializeField] Transform Muzzle;
-    [SerializeField] GameObject BulletParticle;
     protected override void Attack()
     {
         if (Input.GetMouseButtonDown(0))
@@ -23,11 +21,24 @@ public class Hamberger : WeaponBase
                 GameObject bullet = Instantiate(Bullet, weaponArm.position, Quaternion.identity);
 
                 BulletBase bulletMovement = bullet.GetComponent<BulletBase>();
+                bulletMovement.MoveSpeed = BulletSpeed;
                 bulletMovement.dir = direction;
             }
-            Instantiate(BulletParticle,Muzzle.transform.position,
+            Instantiate(BulletParticle, Muzzle.transform.position,
             player.rotation);
             base.Attack();
         }
+    }
+    public override IEnumerator CamTick()
+    {
+        WeaponPos.Rotate(Vector3.left * 700f * Time.deltaTime);
+        var controller = player.GetComponent<FirstPersonController>();
+        controller.CamTickPos = 75f * Time.deltaTime;
+        while (controller.CamTickPos >= -0.75f)
+        {
+            controller.CamTickPos -= Time.deltaTime * recovery;
+            yield return null;
+        }
+        controller.CamTickPos = 0 * Time.deltaTime;
     }
 }

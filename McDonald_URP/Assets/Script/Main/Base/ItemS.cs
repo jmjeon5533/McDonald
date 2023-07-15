@@ -29,7 +29,7 @@ public class ItemS : MonoBehaviour
             SpawnManager.instance.player.WeaponObj.Add(Obj);
             var ui = Instantiate(WeaponUI,UIManager.instance.WeaponPanel).transform;
             UIManager.instance.WeaponUI.Add(ui);
-            o.ActiveWeapon(o.SelectWeaponNum);
+            o.ActiveWeapon(UIManager.instance.WeaponUI.Count - 1);
             SoundManager.instance.SetAudio(PickSound,SoundManager.SoundState.SFX, false);
             Destroy(gameObject);
         }

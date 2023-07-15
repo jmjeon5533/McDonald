@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3010850940199914967}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.372, y: 0, z: -0.453}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -32,7 +32,7 @@ Transform:
   - {fileID: 2674717351234985341}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-2562354217439024827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,9 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 8512198633550633108, guid: 22fbd327a7fe44f47b45da6a3f155299, type: 3}
+  BulletSpeed: 25
   player: {fileID: 0}
   recovery: 25
   FireSound: {fileID: 8300000, guid: cf72f221f3a143345a113b5c6c615727, type: 3}
+  cam: {fileID: 0}
+  CamFieldValue: 60
+  WeaponPos: {fileID: 2674717351234985341}
   Muzzle: {fileID: 2674265433618226165}
   BulletParticle: {fileID: 7278820261188362134, guid: 857f808af0633cf48a05b06f75adabe0,
     type: 3}
