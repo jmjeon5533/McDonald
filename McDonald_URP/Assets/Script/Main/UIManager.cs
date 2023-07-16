@@ -9,20 +9,32 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance { get; private set; }
 
-    public TextMeshProUGUI[] ScoreText;
-    public TextMeshProUGUI TimerText;
-    public Transform WeaponPanel;
-    public Transform ClearPanel;
-    public Transform OverPanel;
-    public Button Title1, Title2, Next, Retry;
+    [Header("텍스트")]
+    public TextMeshProUGUI[] ScoreText; //메인 스코어 & 결과창 스코어
+    public TextMeshProUGUI TimerText; //상단 타이머
+    public TextMeshProUGUI AmmoText; //현재 탄창
+    public TextMeshProUGUI MaxAmmoText; //최대 탄창
+    [Space(10)]
+    [Header("패널")]
+    public Transform WeaponPanel; //무기 패널
+    public Transform megazinePanel; //탄창 패널
+    public Transform ClearPanel; //결과창
+    public Transform OverPanel; //게임 오버 창
+    [SerializeField] Transform OptionPanel; //설정 창
+    public Button Title1, Title2, Next, Retry; //타이틀로 돌아가기, 다음 스테이지, 재도전
 
-    public Transform PausePanel;
-    public List<Transform> WeaponUI = new List<Transform>();
-    public List<GameObject> HeartUI = new List<GameObject>();
-    public int Score = 0;
+    public Transform PausePanel; //퍼즈 탭
+    public List<Transform> WeaponUI = new List<Transform>(); //적용된 무기들
+
+    [SerializeField] GameObject[] HPPanel = new GameObject[2]; //모드 전환에 따른 패널 전환
+    public List<GameObject> HeartUI = new List<GameObject>(); //햄버거 목숨
+    public Image HPImage; //체력 목숨
+    public int Score = 0; //스코어
 
     public bool Escape = false;
     [SerializeField] FirstPersonController player;
+    [SerializeField] Image SelectWeaponImage; //장착 이미지
+    public Image ReloadImage; //장전 UI
     private void Awake()
     {
         instance = this;
@@ -34,8 +46,9 @@ public class UIManager : MonoBehaviour
         for (int i = 1; i < PausePanel.childCount; i++)
         {
             print(i);
-            pauseButton[i-1] = PausePanel.GetChild(i).GetComponent<Button>();
+            pauseButton[i - 1] = PausePanel.GetChild(i).GetComponent<Button>();
         }
+        OptionPanel = SceneManager.instance.OptionPanel;
 
         for (int i = 0; i < HeartUI.Count; i++)
         {
@@ -56,19 +69,33 @@ public class UIManager : MonoBehaviour
         //pauseButton[0].onClick.AddListener();
         pauseButton[2].onClick.AddListener(() =>
         {
-            Debug.Log(2);
             Escape = false;
             Time.timeScale = 1;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            UsePanel(PausePanel, Escape, Ease.OutSine, 0.5f);
+            SceneManager.UsePanel(PausePanel, Escape, Ease.OutSine, 0.5f);
         });
 
         pauseButton[1].onClick.AddListener(() =>
         {
-            Debug.Log(1);
             SceneManager.instance.SceneLoad(0);
         });
+
+        pauseButton[0].onClick.AddListener(() =>
+        {
+            SceneManager.instance.OpenOption();
+        });
+
+        ReloadImage.enabled = false;
+        InitAmmoUI();
+
+        var active = SceneManager.instance.FireMod ? 0 : 1;
+        for(int i = 0; i < HPPanel.Length; i++)
+        {
+            HPPanel[i].SetActive(false);
+        }
+        HPPanel[active].SetActive(true);
+        
     }
     void Update()
     {
@@ -87,13 +114,32 @@ public class UIManager : MonoBehaviour
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
-            UsePanel(PausePanel, Escape, Ease.OutSine, 0.5f);
-
+            SceneManager.UsePanel(PausePanel, Escape, Ease.OutSine, 0.5f);
         }
     }
-    public void MinusHeartUI(int hp)
+    public void InitAmmoUI()
     {
-        HeartUI[hp].SetActive(false);
+        if (player.WeaponObj.Count <= 0)
+        {
+            megazinePanel.gameObject.SetActive(false);
+        }
+        else
+        {
+            megazinePanel.gameObject.SetActive(true);
+            var weaponAmmo = player.WeaponObj[player.SelectWeaponNum].GetComponent<WeaponBase>();
+            AmmoText.text = weaponAmmo.Ammo.ToString();
+            MaxAmmoText.text = weaponAmmo.megazine.ToString();
+            SelectWeaponImage.sprite = player.WeaponImage[player.SelectWeaponNum];
+        }
+    }
+    public void MinusHeartUI(float hp)
+    {
+        if(SceneManager.instance.FireMod)
+        {
+            print($"{hp} : {player.MaxHP}");
+            HPImage.fillAmount = hp/player.MaxHP;
+        }
+        else HeartUI[(int)hp].SetActive(false);
     }
     public void InitWeaponUI(int Index)
     {
@@ -102,9 +148,5 @@ public class UIManager : MonoBehaviour
             WeaponUI[i].DOScale(1f, 0.2f).SetEase(Ease.OutSine);
         }
         WeaponUI[Index].DOScale(1.5f, 0.2f).SetEase(Ease.OutSine);
-    }
-    public static void UsePanel(Transform Obj, bool use, Ease easing, float time)
-    {
-        Obj.DOLocalMoveY(use ? 0 : 380, time).SetEase(easing);
     }
 }

@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Boss1 : EnemyBase
 {
-    public int HP;
     protected override void Start()
     {
-        isRand = false;
-        WeakCount = SpawnManager.instance.BossWeakCount[SceneManager.instance.StageNum];
         Bar = Instantiate(SpawnManager.instance.BossBarPrefab, transform.position, Quaternion.identity);
-        Bar.GetComponent<BossSpriteBar>().Target = transform;
+            Bar.GetComponent<BossSpriteBar>().Target = transform;
+        if (!SceneManager.instance.FireMod)
+        {
+            isRand = false;
+            WeakCount = SpawnManager.instance.BossWeakCount[SceneManager.instance.StageNum];
+        }
+        else
+        {
+            HP *= 50;
+        }
         base.Start();
     }
     protected override void WeakOut()

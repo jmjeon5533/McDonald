@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemS : MonoBehaviour
+public class WeaponItem : MonoBehaviour
 {
     public enum WeaponType
     {

@@ -6,20 +6,21 @@ public class BossSpriteBar : MonoBehaviour
 {
     public SpriteRenderer HPBar;
     private Boss1 bossBase;
-    private float BossMaxHP;
 
     [HideInInspector] public Transform Target;
     [SerializeField] Transform foodPos;
     [SerializeField] SpriteRenderer barGauge;
-    [HideInInspector] 
+    [HideInInspector]
 
     void Start()
     {
         bossBase = Target.GetComponent<Boss1>();
-        BossMaxHP = bossBase.HP;
-
-        bossBase.enemyMaxLimit = bossBase.limit;
-        InitWeakUI();
+        bossBase.MaxHP = bossBase.HP;
+        if (!SceneManager.instance.FireMod)
+        {
+            bossBase.enemyMaxLimit = bossBase.limit;
+            InitWeakUI();
+        }
     }
     public void InitWeakUI()
     {
@@ -28,15 +29,15 @@ public class BossSpriteBar : MonoBehaviour
             var weak = Instantiate(SpawnManager.instance.WeakPrefab[(int)bossBase.Weak[i].Weakness], foodPos);
             bossBase.WeakImage.Add(weak);
             var xPos = 0f;
-            if(bossBase.Weak.Count != 1)
+            if (bossBase.Weak.Count != 1)
             {
-                xPos = Mathf.Lerp(3f,-3f,(float)i / (float)(bossBase.Weak.Count - 1));
+                xPos = Mathf.Lerp(3f, -3f, (float)i / (float)(bossBase.Weak.Count - 1));
             }
             else
             {
                 xPos = bossBase.Weak.Count;
             }
-            weak.transform.localPosition = new Vector3(xPos,0,0);
+            weak.transform.localPosition = new Vector3(xPos, 0, 0);
         }
     }
     void Update()
@@ -47,11 +48,17 @@ public class BossSpriteBar : MonoBehaviour
         }
         else
         {
-            barGauge.size = new Vector2((bossBase.limit / bossBase.enemyMaxLimit) * 4.6f, barGauge.size.y);
-            HPBar.size = new Vector2((bossBase.HP / BossMaxHP) * 4.6f, HPBar.size.y);
+            if(SceneManager.instance.FireMod)
+            {
+                barGauge.size = new Vector2(0, barGauge.size.y);
+            }
+            else barGauge.size 
+                = new Vector2((bossBase.limit / bossBase.enemyMaxLimit) * 4.6f, barGauge.size.y);
+
+            HPBar.size = new Vector2((bossBase.HP / bossBase.MaxHP) * 4.6f, HPBar.size.y);
 
             transform.position = Target.position + new Vector3(0, 2, 0);
         }
-        
+
     }
 }

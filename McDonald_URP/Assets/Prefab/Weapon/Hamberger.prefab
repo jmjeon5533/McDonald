@@ -50,12 +50,22 @@ MonoBehaviour:
   player: {fileID: 0}
   recovery: 25
   FireSound: {fileID: 8300000, guid: cf72f221f3a143345a113b5c6c615727, type: 3}
+  ReloadSound: {fileID: 8300000, guid: 9b0157e4af30d2645ba0e0e8947ff14a, type: 3}
   cam: {fileID: 0}
   CamFieldValue: 60
   WeaponPos: {fileID: 2674717351234985341}
-  Muzzle: {fileID: 2674265433618226165}
   BulletParticle: {fileID: 7278820261188362134, guid: 857f808af0633cf48a05b06f75adabe0,
     type: 3}
+  Muzzle: {fileID: 2674265433618226165}
+  WeaponImage: {fileID: 21300000, guid: 14a3c58b2c0aa85449a87194d5e756f0, type: 3}
+  Ammo: 8
+  megazine: 24
+  maxAmmo: 8
+  Damage: 60
+  ReloadTime: 1.75
+  isReload: 0
+  AttackTime: 0.5
+  isAttack: 0
 --- !u!1 &6007785581545390705
 GameObject:
   m_ObjectHideFlags: 0

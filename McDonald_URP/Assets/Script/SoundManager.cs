@@ -25,7 +25,7 @@ public class SoundManager : MonoBehaviour
     }
     void Start()
     {
-        SetAudio(BGM[Random.Range(0,BGM.Length)], SoundState.BGM, true);
+        
     }
     void Update()
     {
@@ -40,6 +40,6 @@ public class SoundManager : MonoBehaviour
         sound.GetComponent<Sound>().soundState = soundState;
         sound.loop = looping;
         sound.Play();
-        Destroy(sound.gameObject,audio.length);
+        if(!looping) Destroy(sound.gameObject,audio.length);
     }
 }

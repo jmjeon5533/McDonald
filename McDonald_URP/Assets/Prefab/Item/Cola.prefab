@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2293107596827916114}
   - component: {fileID: 4603026768633442415}
   - component: {fileID: 4994504850492416940}
-  - component: {fileID: 2604337463815842364}
+  - component: {fileID: -7834020413367390415}
   m_Layer: 0
   m_Name: Cola
   m_TagString: Untagged
@@ -99,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2604337463815842364
+--- !u!114 &-7834020413367390415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,10 +108,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 37855653801478644}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8574cdf66f256fc45b836aa0180146da, type: 3}
+  m_Script: {fileID: 11500000, guid: 29fe58609dca68146ad6aacede328fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponType: 1
+  weaponType: 0
   WeaponObj: {fileID: 7712499808114637771, guid: 9f95b32eaa74ee148a4efde5db9b3b3e,
     type: 3}
   WeaponUI: {fileID: 6870858989153490393, guid: dc739df4f2ceb1c45b3540542e9b18f9,

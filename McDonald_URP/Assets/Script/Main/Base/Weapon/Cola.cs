@@ -6,22 +6,34 @@ public class Cola : WeaponBase
 {
     public GameObject ColaWeaponPrefab;
     public ParticleSystem ColaWeapon;
-    protected override void Attack()
+    protected override void AttackKey()
     {
         if (Input.GetMouseButton(0))
         {
             ColaWeapon.Play();
             ColaWeapon.loop = true;
+            //SoundManager.instance.SetAudio(FireSound,SoundManager.SoundState.SFX, false);
+            minusAmmo();
+            UIManager.instance.InitAmmoUI();
         }
         else
         {
             ColaWeapon.loop = false;
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reload();
+        }
+    }
+    public override void Reload()
+    {
+        ColaWeapon.loop = false;
+        base.Reload();
     }
     protected override void Start()
     {
         base.Start();
-        transform.localPosition = new Vector3(0.6f,-0.75f);
+        transform.localPosition = new Vector3(0,0,0);
         transform.localRotation = Quaternion.Euler(new Vector3(0,0,0));
         ColaWeapon = Instantiate(ColaWeaponPrefab,transform.position,Quaternion.identity,transform)
         .GetComponent<ParticleSystem>();

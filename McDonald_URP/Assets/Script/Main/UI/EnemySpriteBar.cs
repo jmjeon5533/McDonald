@@ -9,13 +9,19 @@ public class EnemySpriteBar : MonoBehaviour
     [SerializeField] Transform foodPos;
     [SerializeField] SpriteRenderer barGauge;
     [HideInInspector] public EnemyBase enemyBase;
-    [HideInInspector] 
 
     void Start()
     {
         enemyBase = Target.GetComponent<EnemyBase>();
-        enemyBase.enemyMaxLimit = enemyBase.limit;
-        InitWeakUI();
+        if (SceneManager.instance.FireMod)
+        {
+            enemyBase.MaxHP = enemyBase.HP;
+        }
+        else
+        {
+            enemyBase.enemyMaxLimit = enemyBase.limit;
+            InitWeakUI();
+        }
     }
     public void InitWeakUI()
     {
@@ -24,15 +30,15 @@ public class EnemySpriteBar : MonoBehaviour
             var weak = Instantiate(SpawnManager.instance.WeakPrefab[(int)enemyBase.Weak[i].Weakness], foodPos);
             enemyBase.WeakImage.Add(weak);
             var xPos = 0f;
-            if(enemyBase.Weak.Count != 1)
+            if (enemyBase.Weak.Count != 1)
             {
-                xPos = Mathf.Lerp(1f,-1f,(float)i / (float)(enemyBase.Weak.Count - 1));
+                xPos = Mathf.Lerp(1f, -1f, (float)i / (float)(enemyBase.Weak.Count - 1));
             }
             else
             {
                 xPos = enemyBase.Weak.Count;
             }
-            weak.transform.localPosition = new Vector3(xPos,0,0);
+            weak.transform.localPosition = new Vector3(xPos, 0, 0);
         }
     }
     void Update()
@@ -43,9 +49,12 @@ public class EnemySpriteBar : MonoBehaviour
         }
         else
         {
-            barGauge.size = new Vector2((enemyBase.limit / enemyBase.enemyMaxLimit) * 4.6f, barGauge.size.y);
-
-            transform.position = Target.position + new Vector3(0, 2, 0);
+            bool isfire = SceneManager.instance.FireMod;
+            float N = isfire ? enemyBase.HP : enemyBase.limit;
+            float MaxN = isfire ? enemyBase.MaxHP : enemyBase.enemyMaxLimit;
+            
+            barGauge.size = new Vector2((N / MaxN) * 4.6f, barGauge.size.y);
+            transform.position = Target.position + new Vector3(0, 3.5f, 0);
         }
     }
 }

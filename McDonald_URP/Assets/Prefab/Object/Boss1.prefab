@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3638963666035566607}
   - component: {fileID: 4657311790353760203}
   - component: {fileID: 5635164708171210913}
+  - component: {fileID: -6438782755386530355}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Enemy
@@ -99,16 +100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1966e561ed5356745a023fc0430fe5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathEffect: {fileID: 7922576669992448660, guid: 60e4cff0c90f2c840a78ed02dbecac9a,
-    type: 3}
   DeathUIEffect: {fileID: 2269703068628722063, guid: d314dec4f211bf24982d3371dd7c8b53,
+    type: 3}
+  DeathEffect: {fileID: 7922576669992448660, guid: 60e4cff0c90f2c840a78ed02dbecac9a,
     type: 3}
   Score: 5000
   Weak: []
   WeakImage: []
-  limit: 20
+  limit: 40
   enemyMaxLimit: 0
   HP: 5
+  MaxHP: 0
+  damage: 12
 --- !u!195 &-3638963666035566607
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -160,3 +163,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &-6438782755386530355
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4485867744207864236}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

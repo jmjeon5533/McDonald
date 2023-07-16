@@ -24,6 +24,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject EnemyBarPrefab; //적 UI 프리팹
     public GameObject BossBarPrefab; //보스 UI 프리팹
     public List<Transform> EnemySpawnPos = new List<Transform>(); //적 소환 위치
+    public List<GameObject> SupplyPrefab = new List<GameObject>(); //보급
     public Transform Ronald; //마스코트 = 지켜야함
 
     public GameObject[] MapPrefab; //맵
@@ -37,6 +38,8 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] float SpawnTime;
     float SpawnCurtime;
+    [SerializeField] float[] SupplyTime;
+    float SupplyCurtime;
     GameObject boss;
     public bool IsBoss = false;
 
@@ -60,6 +63,8 @@ public class SpawnManager : MonoBehaviour
         min = (int)(GameTime[SceneManager.instance.StageNum] / 60);
         sec = GameTime[SceneManager.instance.StageNum] % 60;
 
+        SpawnTime = SceneManager.instance.FireMod ? SpawnTime/1.7f : SpawnTime;
+
         SceneManager.instance.isGame = true;
     }
     private void Update()
@@ -67,6 +72,7 @@ public class SpawnManager : MonoBehaviour
         if (SceneManager.instance.isGame && !IsBoss)
         {
             Spawn();
+            Supply();
             Timer();
         }
     }
@@ -78,6 +84,18 @@ public class SpawnManager : MonoBehaviour
             SpawnCurtime -= SpawnTime;
             var rand = Random.Range(0, EnemySpawnPos.Count);
             Instantiate(EnemyPrefab[0], EnemySpawnPos[rand].position, Quaternion.identity);
+        }
+    }
+    void Supply()
+    {
+        SupplyCurtime += Time.deltaTime;
+        if(SupplyCurtime >= SupplyTime[SceneManager.instance.StageNum])
+        {
+            SupplyCurtime -= SupplyTime[SceneManager.instance.StageNum];
+            float x = Random.Range(4.5f,-21f);
+            float z = Random.Range(10f,26f);
+            Instantiate(SupplyPrefab[Random.Range(0,SupplyPrefab.Count)],
+                new Vector3(x,10,z),Quaternion.identity);
         }
     }
     void Timer()
@@ -111,7 +129,7 @@ public class SpawnManager : MonoBehaviour
     public void GameClear()
     {
         SceneManager.instance.isGame = false;
-        UIManager.UsePanel(UIManager.instance.ClearPanel, true, DG.Tweening.Ease.OutBack, 1);
+        SceneManager.UsePanel(UIManager.instance.ClearPanel, true, DG.Tweening.Ease.OutBack, 1);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         for (int i = 0; i < player.WeaponObj.Count; i++)
@@ -122,7 +140,7 @@ public class SpawnManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.instance.isGame = false;
-        UIManager.UsePanel(UIManager.instance.OverPanel, true, DG.Tweening.Ease.OutBack, 1);
+        SceneManager.UsePanel(UIManager.instance.OverPanel, true, DG.Tweening.Ease.OutBack, 1);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         for (int i = 0; i < player.WeaponObj.Count; i++)

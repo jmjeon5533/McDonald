@@ -14563,7 +14563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2569194121897567833}
   - component: {fileID: -8260711803844026677}
-  - component: {fileID: 6731740986578496389}
+  - component: {fileID: 6748293071526973022}
   m_Layer: 0
   m_Name: Hamberger
   m_TagString: Untagged
@@ -14601,7 +14601,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6731740986578496389
+--- !u!114 &6748293071526973022
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14610,7 +14610,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8353971944916123598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8574cdf66f256fc45b836aa0180146da, type: 3}
+  m_Script: {fileID: 11500000, guid: 29fe58609dca68146ad6aacede328fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponType: 0

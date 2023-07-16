@@ -8,21 +8,27 @@ using UnityEngine.AI;
 public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
-    [SerializeField] Transform[] CamPos;
-    [SerializeField] Transform CamArm;
-    [SerializeField] Transform cam;
-    [SerializeField] float CamRotSpeed;
+    [SerializeField] Transform[] CamPos; //카메라 랜덤 위치
+    [SerializeField] Transform CamArm; //카메라 피봇
+    [SerializeField] Transform cam; //카메라
+    [SerializeField] float CamRotSpeed; //카메라 회전 속도
     [Space(10)]
-    [SerializeField] GameObject[] TitleUI;
-    [SerializeField] Button[] StageButton;
-    private bool isIntro = false;
-
-    [SerializeField] GameObject[] IntroEnemy;
-    [SerializeField] GameObject map;
+    [SerializeField] GameObject[] TitleUI; //타이틀에 들어갈 UI
+    [SerializeField] Button[] StageButton; //스테이지 버튼들
+    [SerializeField] Transform OptionPanel; //설정 창
+    [SerializeField] Button OptionButton; //설정 버튼
+    [Space(10)]
+    private bool isIntro = false; //인트로 유무
+    [SerializeField] GameObject[] IntroEnemy; //인트로에 등장할 적
+    [SerializeField] GameObject map; //인트로용 맵
     void Start()
     {
+        var s = SoundManager.instance;
         map.GetComponent<NavMeshSurface>().RemoveData();
         map.GetComponent<NavMeshSurface>().BuildNavMesh();
+
+        SceneManager.instance.isGame = false;
+
         for(int i = 0; i < IntroEnemy.Length; i++)
         {   
             IntroEnemy[i].SetActive(false);
@@ -39,6 +45,9 @@ public class TitleManager : MonoBehaviour
             var index = i;
             StageButton[i].onClick.AddListener(()=>SceneManager.instance.StageLoad(index));
         }
+        OptionButton.onClick.AddListener(()=> SceneManager.instance.OpenOption());
+        s.SetAudio(s.BGM[Random.Range(0,s.BGM.Length)], SoundManager.SoundState.BGM, true);
+        OptionPanel = SceneManager.instance.OptionPanel;
     }
     IEnumerator Intro()
     {
@@ -60,7 +69,7 @@ public class TitleManager : MonoBehaviour
         cam.position = new Vector3(-22.54f,2.54f,31.46f);
         cam.eulerAngles = new Vector3(18, 158);
         yield return new WaitForSeconds(2f);
-        cam.position = new Vector3(-20.88f,2.47f,27.77f);
+        cam.position = new Vector3(-20.88f,3.47f,27.77f);
         cam.eulerAngles = new Vector3(18, 297);
         yield return new WaitForSeconds(1f);
         IntroEnemy[0].transform.GetChild(0).gameObject.SetActive(true);

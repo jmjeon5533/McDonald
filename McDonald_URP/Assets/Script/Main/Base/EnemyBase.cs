@@ -7,30 +7,45 @@ using UnityEngine.ParticleSystemJobs;
 public class EnemyBase : MonoBehaviour
 {
     protected NavMeshAgent nav;
+    protected Animator anim;
     protected Transform target;
     public GameObject DeathUIEffect;
     public GameObject DeathEffect;
     public int Score;
-
+    [Header("약점 모드")]
     public List<Weak> Weak = new List<Weak>();
     public List<GameObject> WeakImage = new List<GameObject>();
-    public float limit;
-
+    public float limit; //인내심
+    public float enemyMaxLimit; //인내심 최대(UI용)
     protected int WeakCount;
-    protected bool isRand = true;
+    protected bool isRand = true; //약점 갯수 랜덤 유무 (보스 구별용)
+    [Header("사격 모드")]
+    public float HP; //체력
+    public float MaxHP; //최대 체력
+
+    public float damage; //공격력
+
     protected GameObject Bar; //enemyUIBar
-    public float enemyMaxLimit; //최대 한계(UI용)
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
     }
     protected virtual void Start()
     {
-        target = SpawnManager.instance.Ronald.transform;
-        InitWeak();
-        limit = limit * (1 / SpawnManager.instance.hardValue[SceneManager.instance.StageNum]);
-        nav.SetDestination(target.position);
+        anim.speed = nav.speed;
+        if (SceneManager.instance.FireMod)
+        {
+            target = SpawnManager.instance.player.transform;
+        }
+        else
+        {
+            target = SpawnManager.instance.Ronald.transform;
+            InitWeak();
+            limit = limit * (1 / SpawnManager.instance.hardValue[SceneManager.instance.StageNum]);
+            nav.SetDestination(target.position);
+        }
     }
     protected void InitWeak()
     {
@@ -49,30 +64,53 @@ public class EnemyBase : MonoBehaviour
     }
     private void Update()
     {
-        if (SceneManager.instance.isGame) limit -= Time.deltaTime;
+        if (SceneManager.instance.isGame)
+        {
+            if (SceneManager.instance.FireMod)
+            {
+                nav.SetDestination(target.position);
+            }
+            else limit -= Time.deltaTime;
+        }
         else
         {
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
-        if (limit <= 0 || Vector3.Distance(transform.position,target.position) <= 1.5f) isFailed();
+        if (limit <= 0 || Vector3.Distance(transform.position, target.position) <= 1.5f) isFailed();
     }
     protected virtual void isFailed()
     {
-        SpawnManager.instance.player.Damage();
-        Destroy(gameObject);
+        if (SceneManager.instance.FireMod)
+        {
+            SpawnManager.instance.player.Damage(damage);
+        }
+        else
+        {
+            SpawnManager.instance.player.Damage();
+            Destroy(gameObject);
+        }
     }
     public void Damage(float damage, SpawnManager.Weakness Weaked)
     {
-        if (!isWeak(Weaked)) limit -= damage;
-        else SearchWeak(Weaked);
-        if (Weak.Count <= 0) WeakOut();
+        if (SceneManager.instance.FireMod)
+        {
+            HP -= damage;
+            if(HP <= 0) WeakOut();
+        }
+        else
+        {
+            if (!isWeak(Weaked)) limit -= damage;
+            else SearchWeak(Weaked);
+            if (Weak.Count <= 0) WeakOut();
+        }
     }
     protected virtual void WeakOut()
     {
         UIManager.instance.Score += Score;
-        foreach (var score in UIManager.instance.ScoreText) score.text = string.Format("{0:N0}", UIManager.instance.Score);
+        foreach (var score in UIManager.instance.ScoreText) 
+            score.text = string.Format("{0:N0}", UIManager.instance.Score);
     }
     protected virtual bool isWeak(SpawnManager.Weakness value)
     {
@@ -115,8 +153,8 @@ public class EnemyBase : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
-        // Apply damage to self
         float damage = 0.1f; // 대미지 양 (원하는 값으로 수정)
+        // Apply damage to self
         SpawnManager.Weakness weakness = SpawnManager.Weakness.Cola; // 적중한 파티클의 약점 (원하는 값으로 수정)
         Damage(damage, weakness);
     }
