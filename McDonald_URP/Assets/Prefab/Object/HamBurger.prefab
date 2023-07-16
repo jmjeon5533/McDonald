@@ -4763,6 +4763,7 @@ MonoBehaviour:
     type: 3}
   bulletAttribute: 0
   RotateSpeed: 500
+  ExplodeSound: {fileID: 8300000, guid: 31290a1abc01dba4c933a3e81c294300, type: 3}
 --- !u!199 &8512198633550633109
 ParticleSystemRenderer:
   serializedVersion: 6

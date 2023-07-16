@@ -55,16 +55,30 @@ public class UIManager : MonoBehaviour
             HeartUI[i].SetActive(true);
         }
         foreach (var score in ScoreText) score.text = $"{0}";
-        Title1.onClick.AddListener(() => { Scene.SceneLoad(0); });
-        Title2.onClick.AddListener(() => { Scene.SceneLoad(0); });
+        Title1.onClick.AddListener(() =>
+        {
+            Scene.SceneLoad(0);
+            SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+                SoundManager.SoundState.SFX, false);
+        });
+        Title2.onClick.AddListener(() =>
+        {
+            Scene.SceneLoad(0);
+            SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+                SoundManager.SoundState.SFX, false);
+        });
         Next.onClick.AddListener(() =>
         {
             Scene.StageNum++;
             Scene.SceneLoad(1);
+            SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+                SoundManager.SoundState.SFX, false);
         });
         Retry.onClick.AddListener(() =>
         {
             Scene.SceneLoad(1);
+            SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+                SoundManager.SoundState.SFX, false);
         });
         //pauseButton[0].onClick.AddListener();
         pauseButton[2].onClick.AddListener(() =>
@@ -74,28 +88,35 @@ public class UIManager : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             SceneManager.UsePanel(PausePanel, Escape, Ease.OutSine, 0.5f);
+
+            SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+                SoundManager.SoundState.SFX, false);
         });
 
         pauseButton[1].onClick.AddListener(() =>
         {
             SceneManager.instance.SceneLoad(0);
+            SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+                SoundManager.SoundState.SFX, false);
         });
 
         pauseButton[0].onClick.AddListener(() =>
         {
             SceneManager.instance.OpenOption();
+            SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+                SoundManager.SoundState.SFX, false);
         });
 
         ReloadImage.enabled = false;
         InitAmmoUI();
 
         var active = SceneManager.instance.FireMod ? 0 : 1;
-        for(int i = 0; i < HPPanel.Length; i++)
+        for (int i = 0; i < HPPanel.Length; i++)
         {
             HPPanel[i].SetActive(false);
         }
         HPPanel[active].SetActive(true);
-        
+
     }
     void Update()
     {
@@ -134,10 +155,9 @@ public class UIManager : MonoBehaviour
     }
     public void MinusHeartUI(float hp)
     {
-        if(SceneManager.instance.FireMod)
+        if (SceneManager.instance.FireMod)
         {
-            print($"{hp} : {player.MaxHP}");
-            HPImage.fillAmount = hp/player.MaxHP;
+            HPImage.fillAmount = hp / player.MaxHP;
         }
         else HeartUI[(int)hp].SetActive(false);
     }

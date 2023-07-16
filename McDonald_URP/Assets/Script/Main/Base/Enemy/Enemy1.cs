@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Enemy1 : EnemyBase
 {
+    public Material[] materials;
+    [SerializeField] SkinnedMeshRenderer meshRenderer;
     protected override void Start()
     {
+        meshRenderer.material = materials[Random.Range(0,materials.Length)];
         WeakCount = SpawnManager.instance.EnemyWeakCount[SceneManager.instance.StageNum];
         Bar = Instantiate(SpawnManager.instance.EnemyBarPrefab, transform.position, Quaternion.identity);
         Bar.GetComponent<EnemySpriteBar>().Target = transform;

@@ -95,7 +95,7 @@ MonoBehaviour:
   Damage: 40
   ReloadTime: 1.5
   isReload: 0
-  AttackTime: 1
+  AttackTime: 0.8
   isAttack: 0
 --- !u!1001 &1915862687887621289
 PrefabInstance:

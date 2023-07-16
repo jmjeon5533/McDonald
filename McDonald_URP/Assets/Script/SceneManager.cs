@@ -19,9 +19,14 @@ public class SceneManager : MonoBehaviour
     [SerializeField] Sprite[] FireModSprite = new Sprite[2];
     [SerializeField] TextMeshProUGUI FireModText, FireModExplain;
 
+    [SerializeField] Button OptionExitButton; //설정 나가기 버튼
+
     [SerializeField] Slider BGMSl,SFXSl;
     public Transform canvas;
     public int StageNum = 0;
+
+    public AudioClip ClickSound; //클릭
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -38,6 +43,14 @@ public class SceneManager : MonoBehaviour
             FireMod = !FireMod;
             FireModImage.sprite = FireMod ? FireModSprite[0] : FireModSprite[1];
             InitText();
+            SoundManager.instance.SetAudio(ClickSound,
+                SoundManager.SoundState.SFX, false);
+        });
+        OptionExitButton.onClick.AddListener(() =>
+        {
+            CloseOption();
+            SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+        SoundManager.SoundState.SFX, false);
         });
 
         InitText();

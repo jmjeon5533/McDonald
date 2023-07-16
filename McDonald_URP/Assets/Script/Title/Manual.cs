@@ -15,10 +15,12 @@ public class Manual : MonoBehaviour
     }
     public void SetPanel(int ind)
     {
-        for(int i = 0; i < Panel.Count; i++)
+        for (int i = 0; i < Panel.Count; i++)
         {
             Panel[i].SetActive(false);
         }
         Panel[ind].SetActive(true);
+        SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+            SoundManager.SoundState.SFX, false);
     }
 }

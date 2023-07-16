@@ -64,7 +64,7 @@ MonoBehaviour:
   Damage: 60
   ReloadTime: 1.75
   isReload: 0
-  AttackTime: 0.5
+  AttackTime: 0.7
   isAttack: 0
 --- !u!1 &6007785581545390705
 GameObject:

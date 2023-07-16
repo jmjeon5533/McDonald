@@ -153,7 +153,7 @@ public class EnemyBase : MonoBehaviour
     }
     private void OnParticleCollision(GameObject other)
     {
-        float damage = 0.1f; // 대미지 양 (원하는 값으로 수정)
+        float damage = SceneManager.instance.FireMod ? 1f : 0.1f; // 대미지 양 (원하는 값으로 수정)
         // Apply damage to self
         SpawnManager.Weakness weakness = SpawnManager.Weakness.Cola; // 적중한 파티클의 약점 (원하는 값으로 수정)
         Damage(damage, weakness);

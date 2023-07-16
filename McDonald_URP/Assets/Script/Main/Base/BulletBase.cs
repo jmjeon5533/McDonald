@@ -26,15 +26,18 @@ public class BulletBase : MonoBehaviour
             if(collider.CompareTag("Enemy"))
             {
                 collider.GetComponent<EnemyBase>().Damage(Damage, bulletAttribute);
-                Instantiate(DeathEffect,transform.position,Quaternion.identity);
-                Destroy(gameObject);
+                Explode();
             }
             else if(collider.CompareTag("Map"))
             {
-                Instantiate(DeathEffect,transform.position,Quaternion.identity);
-                Destroy(gameObject);
+                Explode();
             }
         }
+    }
+    protected virtual void Explode()
+    {
+        Instantiate(DeathEffect,transform.position,Quaternion.identity);
+        Destroy(gameObject);
     }
     private void OnDrawGizmos() {
         Gizmos.DrawWireSphere(transform.position,radius);    
