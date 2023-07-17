@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         var Scene = SceneManager.instance;
+        if(Scene.StageNum == 2) Next.gameObject.SetActive(false);
         Button[] pauseButton = new Button[3];
         for (int i = 1; i < PausePanel.childCount; i++)
         {
