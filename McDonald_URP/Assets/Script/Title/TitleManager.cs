@@ -49,7 +49,7 @@ public class TitleManager : MonoBehaviour
             var index = i;
             StageButton[index].onClick.AddListener(() =>
             {
-                SceneManager.instance.StageLoad(index);
+                if(index < 3) SceneManager.instance.StageLoad(index);
                 SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
                     SoundManager.SoundState.SFX, false);
             });

@@ -62,7 +62,7 @@ public class EnemyBase : MonoBehaviour
             Weak.Add(weak);
         }
     }
-    private void Update()
+    protected virtual void Update()
     {
         if (SceneManager.instance.isGame)
         {
@@ -77,8 +77,7 @@ public class EnemyBase : MonoBehaviour
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-
-        if (limit <= 0 || Vector3.Distance(transform.position, target.position) <= 1.5f) isFailed();
+        if (limit <= 0 || Vector3.Distance(transform.position, target.position) <= 2f) isFailed();
     }
     protected virtual void isFailed()
     {

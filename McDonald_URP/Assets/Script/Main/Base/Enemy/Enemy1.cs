@@ -14,6 +14,11 @@ public class Enemy1 : EnemyBase
         Bar.GetComponent<EnemySpriteBar>().Target = transform;
         base.Start();
     }
+    protected override void Update()
+    {
+        base.Update();
+        if(SpawnManager.instance.IsBoss) Destroy(gameObject);
+    }
     protected override void WeakOut()
     {
         base.WeakOut();

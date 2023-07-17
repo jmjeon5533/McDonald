@@ -4153,9 +4153,9 @@ MonoBehaviour:
   - 1.5
   - 2
   GameTime:
-  - 30
-  - 60
-  - 90
+  - 10
+  - 10
+  - 10
   EnemyWeakCount: 020000000200000003000000
   BossWeakCount: 00000000070000000a000000
   min: 0
