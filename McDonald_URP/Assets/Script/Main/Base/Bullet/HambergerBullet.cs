@@ -6,6 +6,7 @@ public class HambergerBullet : BulletBase
 {
     [SerializeField] float RotateSpeed;
     [SerializeField] AudioClip ExplodeSound;
+    [SerializeField] GameObject Explosion;
 
     protected override void Update()
     {
@@ -25,8 +26,9 @@ public class HambergerBullet : BulletBase
                     collider.GetComponent<EnemyBase>().Damage(Damage, bulletAttribute);
                 }
             }
-            SoundManager.instance.SetAudio(ExplodeSound, SoundManager.SoundState.SFX, false);
+            Instantiate(Explosion, transform.position, Quaternion.identity);
         }
+        SoundManager.instance.SetAudio(ExplodeSound, SoundManager.SoundState.SFX, false);
         base.Explode();
     }
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Hamberger : WeaponBase
 {
+    protected override void Start()
+    {
+        base.Start();
+        AttackTime = SceneManager.instance.FireMod ? AttackTime * 2 : AttackTime;
+    }
     protected override void Attack()
     {
         Vector3 mousePosition = Input.mousePosition;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5024736009230030872}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 7241422512990567271}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 1294031608499857332}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3207189330349828373}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 2007192783877533252}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 7967827326996627579}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 4201761436960917050}
   m_Layer: 0
   m_Name: Stage2WallDoor (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 1278542336790121062}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 5773289221602485239}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 2394946408756269512}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 500754051750892292}
   m_Layer: 0
   m_Name: Stage2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -813,7 +813,7 @@ Transform:
   - {fileID: 1703042279033633994}
   - {fileID: 7836574597133985466}
   m_Father: {fileID: 6694510963969080676}
-  m_RootOrder: 51
+  m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: -9.89, z: 0}
 --- !u!1 &1039084973699021445
 GameObject:
@@ -826,7 +826,7 @@ GameObject:
   - component: {fileID: 5488391425535012619}
   m_Layer: 0
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 6032433409242929178}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -895,7 +895,7 @@ GameObject:
   - component: {fileID: 699045546906139781}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -993,7 +993,7 @@ GameObject:
   - component: {fileID: 3325877823807876575}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1091,7 +1091,7 @@ GameObject:
   - component: {fileID: 1906961205182964988}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 3477242919890556800}
   m_Layer: 0
   m_Name: Stage2WallDoor (11)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 8032317626588514292}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1303,7 +1303,7 @@ GameObject:
   - component: {fileID: 3947718512428204021}
   m_Layer: 0
   m_Name: Stage2WallDoor (9)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1387,7 +1387,7 @@ GameObject:
   - component: {fileID: 8839790637177095268}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1485,7 +1485,7 @@ GameObject:
   - component: {fileID: 8132969809703984161}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1580,7 +1580,7 @@ GameObject:
   - component: {fileID: 5274583799952385952}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1616,7 +1616,7 @@ GameObject:
   - component: {fileID: 7788206052649549140}
   m_Layer: 0
   m_Name: Stage2Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1714,7 +1714,7 @@ GameObject:
   - component: {fileID: 8145599732559954110}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1812,7 +1812,7 @@ GameObject:
   - component: {fileID: 3732139748032887876}
   m_Layer: 0
   m_Name: Stage2Floor
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1909,7 +1909,7 @@ GameObject:
   - component: {fileID: 4780233106038381824}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1993,6 +1993,37 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7992293310644007752, guid: 84585f415364ccf4e8260863e935ad86, type: 3}
+--- !u!1 &2303767967645411088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 433406937390208254}
+  m_Layer: 0
+  m_Name: SpawnPos (4)
+  m_TagString: Map
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &433406937390208254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2303767967645411088}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 46.5, y: 0.313, z: 45.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6694510963969080676}
+  m_RootOrder: 51
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2510169000979646755
 GameObject:
   m_ObjectHideFlags: 0
@@ -2017,7 +2048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2510169000979646755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.45, y: 0.313, z: 39.09}
+  m_LocalPosition: {x: 39.7, y: 0.313, z: 66.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2037,7 +2068,7 @@ GameObject:
   - component: {fileID: 5552952109158291450}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2118,7 +2149,7 @@ GameObject:
   - component: {fileID: 9134280305744129939}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2153,7 +2184,7 @@ GameObject:
   - component: {fileID: 9069306489855805906}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2261,7 +2292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2823331194260176169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.92, y: 0, z: 31.67}
+  m_LocalPosition: {x: -41.7, y: 0, z: 42.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2281,7 +2312,7 @@ GameObject:
   - component: {fileID: 8201495465740935464}
   m_Layer: 0
   m_Name: Stage2WallDoor (8)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2365,7 +2396,7 @@ GameObject:
   - component: {fileID: 8193718199394037942}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2463,7 +2494,7 @@ GameObject:
   - component: {fileID: 1293003706298744172}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2561,7 +2592,7 @@ GameObject:
   - component: {fileID: 4362773410931260004}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2659,7 +2690,7 @@ GameObject:
   - component: {fileID: 3799178074154043129}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2754,7 +2785,7 @@ GameObject:
   - component: {fileID: 1580924650350913715}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2789,7 +2820,7 @@ GameObject:
   - component: {fileID: 4466875667032061507}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2870,7 +2901,7 @@ GameObject:
   - component: {fileID: 4605655297429972319}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2913,7 +2944,7 @@ GameObject:
   - component: {fileID: 7520699617226377729}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2945,7 +2976,7 @@ GameObject:
   - component: {fileID: 3954624775816924625}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2978,7 +3009,7 @@ GameObject:
   - component: {fileID: 7347462223579236572}
   m_Layer: 0
   m_Name: Wall (7)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3014,7 +3045,7 @@ GameObject:
   - component: {fileID: 4505931295861310200}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3109,7 +3140,7 @@ GameObject:
   - component: {fileID: 4464158979536857780}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3141,7 +3172,7 @@ GameObject:
   - component: {fileID: 46768567166098484}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3173,7 +3204,7 @@ GameObject:
   - component: {fileID: 2811631523212799868}
   m_Layer: 0
   m_Name: Wall (4)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3206,7 +3237,7 @@ GameObject:
   - component: {fileID: 1703042279033633994}
   m_Layer: 0
   m_Name: Wall (10)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3241,7 +3272,7 @@ GameObject:
   - component: {fileID: 4166408404268681580}
   m_Layer: 0
   m_Name: Stage2WallDoor (4)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3322,7 +3353,7 @@ GameObject:
   - component: {fileID: 2510389610627224178}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3357,7 +3388,7 @@ GameObject:
   - component: {fileID: 997108094026829905}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3455,7 +3486,7 @@ GameObject:
   - component: {fileID: 3833823760021045160}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3553,7 +3584,7 @@ GameObject:
   - component: {fileID: 5630557450888718880}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3651,7 +3682,7 @@ GameObject:
   - component: {fileID: 1671081871547343262}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3746,7 +3777,7 @@ GameObject:
   - component: {fileID: 2394568750348728006}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3778,7 +3809,7 @@ GameObject:
   - component: {fileID: 6667404516264394166}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3811,7 +3842,7 @@ GameObject:
   - component: {fileID: 7836574597133985466}
   m_Layer: 0
   m_Name: Wall (11)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3846,7 +3877,7 @@ GameObject:
   - component: {fileID: 6331438542086355104}
   m_Layer: 0
   m_Name: Stage2WallDoor (10)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3927,7 +3958,7 @@ GameObject:
   - component: {fileID: 9157764066675008105}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3948,6 +3979,37 @@ Transform:
   m_Father: {fileID: 1245865207579851351}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
+--- !u!1 &6210025587310012075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2457926353342113715}
+  m_Layer: 0
+  m_Name: SpawnPos (5)
+  m_TagString: Map
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2457926353342113715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6210025587310012075}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 44.2, y: 0.313, z: 26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6694510963969080676}
+  m_RootOrder: 52
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6219168053713161692
 GameObject:
   m_ObjectHideFlags: 0
@@ -3961,7 +4023,7 @@ GameObject:
   - component: {fileID: 5768593371900603280}
   m_Layer: 0
   m_Name: Stage2BackGround
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4042,7 +4104,7 @@ GameObject:
   - component: {fileID: 3553190048297248806}
   m_Layer: 0
   m_Name: Wall (9)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4075,7 +4137,7 @@ GameObject:
   - component: {fileID: 4520489875796896446}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4111,7 +4173,7 @@ GameObject:
   - component: {fileID: 8865461041984906263}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4206,7 +4268,7 @@ GameObject:
   - component: {fileID: 1245865207579851351}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4239,7 +4301,7 @@ GameObject:
   - component: {fileID: 3182620192691550800}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4274,7 +4336,7 @@ GameObject:
   - component: {fileID: 5139359629550349559}
   m_Layer: 0
   m_Name: Stage2WallDoor (3)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4355,7 +4417,7 @@ GameObject:
   - component: {fileID: 8393154038716610156}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5700,6 +5762,8 @@ Transform:
   - {fileID: 4688472741025867008}
   - {fileID: 1582152717343838936}
   - {fileID: 2282396909456299738}
+  - {fileID: 433406937390208254}
+  - {fileID: 2457926353342113715}
   - {fileID: 500754051750892292}
   - {fileID: 4479545460858701272}
   m_Father: {fileID: 0}
@@ -5751,6 +5815,8 @@ MonoBehaviour:
   - {fileID: 4688472741025867008}
   - {fileID: 1582152717343838936}
   - {fileID: 2282396909456299738}
+  - {fileID: 433406937390208254}
+  - {fileID: 2457926353342113715}
   Ronald: {fileID: 9055333910887992469}
 --- !u!1 &6694510963972303909
 GameObject:
@@ -9281,7 +9347,7 @@ GameObject:
   - component: {fileID: 4608172278403664246}
   m_Layer: 0
   m_Name: Stage2WallDoor
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9362,7 +9428,7 @@ GameObject:
   - component: {fileID: 2424106733390962223}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9397,7 +9463,7 @@ GameObject:
   - component: {fileID: 1431252505245479099}
   m_Layer: 0
   m_Name: Stage2WallDoor (2)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9481,7 +9547,7 @@ GameObject:
   - component: {fileID: 177607963898585144}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9576,7 +9642,7 @@ GameObject:
   - component: {fileID: 3118364609826904459}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9612,7 +9678,7 @@ GameObject:
   - component: {fileID: 9005239210604611212}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9710,7 +9776,7 @@ GameObject:
   - component: {fileID: 8676104274396748275}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9805,7 +9871,7 @@ GameObject:
   - component: {fileID: 8729147720254892418}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9838,7 +9904,7 @@ GameObject:
   - component: {fileID: 5892535311663727761}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9874,7 +9940,7 @@ GameObject:
   - component: {fileID: 3167591551319136816}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9972,7 +10038,7 @@ GameObject:
   - component: {fileID: 4068779596594510435}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10070,7 +10136,7 @@ GameObject:
   - component: {fileID: 6527645849239107595}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10178,7 +10244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8105185070170222825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.82, y: 0.313, z: 39.09}
+  m_LocalPosition: {x: 17.6, y: 0.313, z: 79.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10199,7 +10265,7 @@ GameObject:
   - component: {fileID: 9216538871314785189}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10294,7 +10360,7 @@ GameObject:
   - component: {fileID: 1829731763650550628}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10326,7 +10392,7 @@ GameObject:
   - component: {fileID: 5206482928308308608}
   m_Layer: 0
   m_Name: Wall (5)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10361,7 +10427,7 @@ GameObject:
   - component: {fileID: 5055522064989317832}
   m_Layer: 0
   m_Name: Stage2WallDoor (6)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10442,7 +10508,7 @@ GameObject:
   - component: {fileID: 5167213289093974890}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10475,7 +10541,7 @@ GameObject:
   - component: {fileID: 4257024318331275511}
   m_Layer: 0
   m_Name: Wall (8)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10521,7 +10587,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8606801572879678172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.1, y: 0, z: 31.67}
+  m_LocalPosition: {x: -20.6, y: 0, z: 78.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10539,7 +10605,7 @@ GameObject:
   - component: {fileID: 6762894115237000518}
   m_Layer: 0
   m_Name: Wall (3)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10574,7 +10640,7 @@ GameObject:
   - component: {fileID: 3793675913564194493}
   m_Layer: 0
   m_Name: Stage2WallDoor (7)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10655,7 +10721,7 @@ GameObject:
   - component: {fileID: 7854845115503080564}
   m_Layer: 0
   m_Name: Wall (6)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10691,7 +10757,7 @@ GameObject:
   - component: {fileID: 4019158685481646644}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10788,7 +10854,7 @@ GameObject:
   - component: {fileID: 4841789357287956495}
   m_Layer: 0
   m_Name: Stage2WallDoor (5)
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10872,7 +10938,7 @@ GameObject:
   - component: {fileID: 7724980645253117516}
   m_Layer: 0
   m_Name: Stage2Wall2
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10970,7 +11036,7 @@ GameObject:
   - component: {fileID: 3944249258945651568}
   m_Layer: 0
   m_Name: Stage2Wall
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11089,7 +11155,7 @@ PrefabInstance:
     - target: {fileID: 1410220014510531437, guid: 0585fb66213b88840bbf47420718e31f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.76
+      value: -6.98
       objectReference: {fileID: 0}
     - target: {fileID: 1410220014510531437, guid: 0585fb66213b88840bbf47420718e31f,
         type: 3}
@@ -11159,7 +11225,7 @@ PrefabInstance:
     - target: {fileID: 2569194121897567833, guid: c4c3db31419f8e849bd35b18a4934f24,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.76
+      value: -6.98
       objectReference: {fileID: 0}
     - target: {fileID: 2569194121897567833, guid: c4c3db31419f8e849bd35b18a4934f24,
         type: 3}
@@ -11249,7 +11315,7 @@ PrefabInstance:
     - target: {fileID: 6964806354659274655, guid: 40f154b3783910146ac5a0c0b008e98b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.76
+      value: -6.98
       objectReference: {fileID: 0}
     - target: {fileID: 6964806354659274655, guid: 40f154b3783910146ac5a0c0b008e98b,
         type: 3}
@@ -11306,10 +11372,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameObject
       objectReference: {fileID: 0}
+    - target: {fileID: 5112811320275431893, guid: 6d535de39f4abf045abd8955759ba33a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Map
+      objectReference: {fileID: 0}
     - target: {fileID: 6429994263211929584, guid: 6d535de39f4abf045abd8955759ba33a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 52
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 6429994263211929584, guid: 6d535de39f4abf045abd8955759ba33a,
         type: 3}

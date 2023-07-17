@@ -3205,7 +3205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308178715}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -7}
+  m_LocalPosition: {x: 0, y: 1, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4153,9 +4153,9 @@ MonoBehaviour:
   - 1.5
   - 2
   GameTime:
-  - 10
-  - 10
-  - 10
+  - 30
+  - 60
+  - 90
   EnemyWeakCount: 020000000200000003000000
   BossWeakCount: 00000000070000000a000000
   min: 0
