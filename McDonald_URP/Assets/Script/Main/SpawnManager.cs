@@ -22,7 +22,6 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] EnemyPrefab; //적 프리팹
     public GameObject[] BossPrefab; //보스 프리팹
     public GameObject EnemyBarPrefab; //적 UI 프리팹
-    public GameObject BossBarPrefab; //보스 UI 프리팹
     public List<Transform> EnemySpawnPos = new List<Transform>(); //적 소환 위치
     public List<GameObject> SupplyPrefab = new List<GameObject>(); //보급
     public Transform Ronald; //마스코트 = 지켜야함
@@ -35,6 +34,8 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] int min;
     [SerializeField] float sec;
     public Transform canvas;
+
+    [SerializeField] AudioClip RockExplode;
 
     [SerializeField] float SpawnTime;
     float SpawnCurtime;
@@ -50,6 +51,9 @@ public class SpawnManager : MonoBehaviour
         Cola
     }
     public List<GameObject> WeakPrefab = new List<GameObject>();
+    public List<GameObject> WeakUIPrefab = new List<GameObject>();
+
+    [SerializeField] AudioClip[] BGMSound;
 
     private void Start()
     {
@@ -74,19 +78,27 @@ public class SpawnManager : MonoBehaviour
             SceneManager.instance.isGame = true;
         }
         UIManager.instance.TutorialText.text = "";
+        SoundManager.instance.SetAudio(BGMSound[StageNum],SoundManager.SoundState.BGM,true);
     }
     IEnumerator Tutorial()
     {
         var t = UIManager.instance;
         yield return new WaitForSeconds(1);
+        t.DialogPanel.gameObject.SetActive(true);
         t.Texting(t.TutorialText,"안녕하시무니까",0.1f);
-        yield return new WaitForSeconds(2);
-        t.Texting(t.TutorialText, "아 기분좋다",0.1f);
-        // yield return new WaitUntil(()=>
-        // {
-            
-        // });
-        // SceneManager.instance.isGame = true;
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(()=>Input.GetMouseButtonDown(0));
+        t.Texting(t.TutorialText, "란란루입니더",0.1f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(()=>Input.GetMouseButtonDown(0));
+        t.Texting(t.TutorialText, "나좀 지켜줘요",0.1f);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(()=>Input.GetMouseButtonDown(0));
+
+
+        t.DialogPanel.gameObject.SetActive(false);
+
+        SceneManager.instance.isGame = true;
     }
     private void Update()
     {

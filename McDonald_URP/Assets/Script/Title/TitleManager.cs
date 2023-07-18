@@ -9,7 +9,7 @@ using TMPro;
 public class TitleManager : MonoBehaviour
 {
     public static TitleManager instance { get; private set; }
-    [SerializeField] Transform[] CamPos; //카메라 랜덤 위치
+    [SerializeField] GameObject[] RandMap; //랜덤 맵
     [SerializeField] Transform CamArm; //카메라 피봇
     [SerializeField] Transform cam; //카메라
     [SerializeField] float CamRotSpeed; //카메라 회전 속도
@@ -34,8 +34,6 @@ public class TitleManager : MonoBehaviour
     {
         var s = SoundManager.instance;
         var Scm = SceneManager.instance;
-        map.GetComponent<NavMeshSurface>().RemoveData();
-        map.GetComponent<NavMeshSurface>().BuildNavMesh();
 
         SceneManager.instance.isGame = false;
 
@@ -107,12 +105,23 @@ public class TitleManager : MonoBehaviour
                     SoundManager.SoundState.SFX, false);
             });
         }
-
+        foreach(var r in RandMap)
+        {
+            r.SetActive(false);
+        }
+        RandMap[Random.Range(0,RandMap.Length)].SetActive(true);
         InitText();
     }
     IEnumerator Intro()
     {
         yield return StartCoroutine(SceneManager.instance.FadeOut());
+        foreach(var r in RandMap)
+        {
+            r.SetActive(false);
+        }
+        RandMap[0].SetActive(true);
+        map.GetComponent<NavMeshSurface>().RemoveData();
+        map.GetComponent<NavMeshSurface>().BuildNavMesh();
         IntroSkipButton.gameObject.SetActive(true);
         for (int i = 0; i < IntroEnemy.Length; i++)
         {

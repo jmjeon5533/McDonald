@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     public Transform megazinePanel; //탄창 패널
     public Transform ClearPanel; //결과창
     public Transform OverPanel; //게임 오버 창
+    public Transform DialogPanel; //다이얼로그 창
+    public Transform[] TutorialExample; //튜토리얼 설명
     [SerializeField] Transform OptionPanel; //설정 창
     public Button Title1, Title2, Next, Retry; //타이틀로 돌아가기, 다음 스테이지, 재도전
 
@@ -120,6 +122,7 @@ public class UIManager : MonoBehaviour
             HPPanel[i].SetActive(false);
         }
         HPPanel[active].SetActive(true);
+         
     }
     public void Texting(TextMeshProUGUI tmp, string Text, float speed)
     {

@@ -26,8 +26,6 @@ public class EnemyBase : MonoBehaviour
     public float damage; //공격력
     public float AttackRange; //사거리
 
-    protected GameObject Bar; //enemyUIBar
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -39,6 +37,7 @@ public class EnemyBase : MonoBehaviour
     protected virtual void Start()
     {
         anim.speed = nav.speed;
+        MaxHP = HP;
         if (!SceneManager.instance.FireMod)
         {
             InitWeak();
@@ -107,6 +106,7 @@ public class EnemyBase : MonoBehaviour
         }
         else
         {
+            print("A");
             if (!isWeak(Weaked)) limit -= (damage/10);
             else SearchWeak(Weaked);
             if (Weak.Count <= 0) WeakOut();
@@ -148,7 +148,7 @@ public class EnemyBase : MonoBehaviour
             }
         }
     }
-    protected void InitWeakUI()
+    protected virtual void InitWeakUI()
     {
         for (int i = 0; i < Weak.Count; i++)
         {

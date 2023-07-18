@@ -10,7 +10,7 @@ public class Enemy1 : EnemyBase
     {
         meshRenderer.material = materials[Random.Range(0,materials.Length)];
         WeakCount = SpawnManager.instance.EnemyWeakCount[SceneManager.instance.StageNum];
-        Bar = Instantiate(SpawnManager.instance.EnemyBarPrefab, transform.position, Quaternion.identity);
+        var Bar = Instantiate(SpawnManager.instance.EnemyBarPrefab, transform.position, Quaternion.identity);
         Bar.GetComponent<EnemySpriteBar>().Target = transform;
         base.Start();
     }
