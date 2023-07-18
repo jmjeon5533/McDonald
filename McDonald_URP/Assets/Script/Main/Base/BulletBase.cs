@@ -7,7 +7,7 @@ public class BulletBase : MonoBehaviour
     public float radius = 1f;
     public Vector3 dir;
     public float MoveSpeed;
-    public int Damage;
+    [HideInInspector] public int Damage;
     [SerializeField] GameObject DeathEffect;
     public SpawnManager.Weakness bulletAttribute;
     protected virtual void Start()

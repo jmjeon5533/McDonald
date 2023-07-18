@@ -65,7 +65,28 @@ public class SpawnManager : MonoBehaviour
 
         SpawnTime = SceneManager.instance.FireMod ? SpawnTime/1.7f : SpawnTime;
 
-        SceneManager.instance.isGame = true;
+        if(SceneManager.instance.StageNum == 0)
+        {
+            StartCoroutine(Tutorial());
+        }
+        else
+        {
+            SceneManager.instance.isGame = true;
+        }
+        UIManager.instance.TutorialText.text = "";
+    }
+    IEnumerator Tutorial()
+    {
+        var t = UIManager.instance;
+        yield return new WaitForSeconds(1);
+        t.Texting(t.TutorialText,"안녕하시무니까",0.1f);
+        yield return new WaitForSeconds(2);
+        t.Texting(t.TutorialText, "아 기분좋다",0.1f);
+        // yield return new WaitUntil(()=>
+        // {
+            
+        // });
+        // SceneManager.instance.isGame = true;
     }
     private void Update()
     {

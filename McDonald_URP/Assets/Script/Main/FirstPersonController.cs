@@ -127,7 +127,11 @@ public class FirstPersonController : MonoBehaviour
     }
     public void ActiveWeapon(int index)
     {
-        if (index > WeaponObj.Count - 1) return;
+        if (index > WeaponObj.Count - 1)
+        {
+            SelectWeaponNum = WeaponObj.Count - 1;
+            return;
+        }
         SelectWeaponNum = index;
         var UI = UIManager.instance;
         if (index + 1 > WeaponObj.Count) return;

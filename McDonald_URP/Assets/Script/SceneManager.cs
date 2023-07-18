@@ -14,10 +14,6 @@ public class SceneManager : MonoBehaviour
     public static SceneManager instance { get; private set; }
     public bool isGame = false; //게임 중 유무
     public bool FireMod = false; //사격 모드 유무
-    [SerializeField] Button FireModButton;
-    [SerializeField] Image FireModImage;
-    [SerializeField] Sprite[] FireModSprite = new Sprite[2];
-    [SerializeField] TextMeshProUGUI FireModText, FireModExplain;
 
     [SerializeField] Button OptionExitButton; //설정 나가기 버튼
 
@@ -38,35 +34,17 @@ public class SceneManager : MonoBehaviour
     private void Start()
     {
         StageNum = 0;
-        FireModButton.onClick.AddListener(() =>
-        {
-            FireMod = !FireMod;
-            FireModImage.sprite = FireMod ? FireModSprite[0] : FireModSprite[1];
-            InitText();
-            SoundManager.instance.SetAudio(ClickSound,
-                SoundManager.SoundState.SFX, false);
-        });
         OptionExitButton.onClick.AddListener(() =>
         {
             CloseOption();
             SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
         SoundManager.SoundState.SFX, false);
         });
-
-        InitText();
     }
     private void Update()
     {
-        FireModButton.gameObject.SetActive(!isGame);
         SoundManager.instance.BGMVolume = BGMSl.value;
         SoundManager.instance.SFXVolume = SFXSl.value;
-    }
-    public void InitText()
-    {
-        FireModText.text = FireMod ? "난사 모드" : "약점 모드";
-        FireModExplain.text
-            = FireMod ? "약점 대신 체력을 깎는 사격 중심 모드입니다." :
-                "약점을 깎아 적을 처리하는 순발력 중심 모드입니다.";
     }
 
     public void SceneLoad(int index)

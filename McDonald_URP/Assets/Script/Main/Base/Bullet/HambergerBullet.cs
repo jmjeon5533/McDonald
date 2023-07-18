@@ -23,7 +23,7 @@ public class HambergerBullet : BulletBase
             {
                 if (collider.CompareTag("Enemy"))
                 {
-                    collider.GetComponent<EnemyBase>().Damage(Damage, bulletAttribute);
+                    collider.GetComponent<EnemyBase>().Damage(Damage / 2, bulletAttribute);
                 }
             }
             Instantiate(Explosion, transform.position, Quaternion.identity);

@@ -6,11 +6,8 @@ using UnityEngine.UI;
 public class Manual : MonoBehaviour
 {
     public List<GameObject> Panel = new List<GameObject>();
-    [SerializeField] GameObject next;
-    public int Page;
     void Start()
     {
-        Page = 0;
         SetPanel(0);
     }
     public void SetPanel(int ind)

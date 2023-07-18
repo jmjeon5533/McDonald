@@ -786,7 +786,8 @@ MonoBehaviour:
   enemyMaxLimit: 0
   HP: 75
   MaxHP: 0
-  damage: 5
+  damage: 12
+  AttackRange: 2
   materials:
   - {fileID: 2100000, guid: 4bf5459554aef5a459c95830f871bf9d, type: 2}
   - {fileID: 2100000, guid: 0cb3f1b6b5c225f4b98cccae30eded42, type: 2}

@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI TimerText; //상단 타이머
     public TextMeshProUGUI AmmoText; //현재 탄창
     public TextMeshProUGUI MaxAmmoText; //최대 탄창
+    public TextMeshProUGUI TutorialText; //튜토리얼 텍스트
     [Space(10)]
     [Header("패널")]
     public Transform WeaponPanel; //무기 패널
@@ -35,6 +36,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] FirstPersonController player;
     [SerializeField] Image SelectWeaponImage; //장착 이미지
     public Image ReloadImage; //장전 UI
+
+    [SerializeField] AudioClip TypingSound; //타이핑 사운드
     private void Awake()
     {
         instance = this;
@@ -42,7 +45,7 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         var Scene = SceneManager.instance;
-        if(Scene.StageNum == 2) Next.gameObject.SetActive(false);
+        if (Scene.StageNum == 2) Next.gameObject.SetActive(false);
         Button[] pauseButton = new Button[3];
         for (int i = 1; i < PausePanel.childCount; i++)
         {
@@ -117,11 +120,25 @@ public class UIManager : MonoBehaviour
             HPPanel[i].SetActive(false);
         }
         HPPanel[active].SetActive(true);
-
+    }
+    public void Texting(TextMeshProUGUI tmp, string Text, float speed)
+    {
+        StartCoroutine(TextingCoroutine(tmp,Text,speed));
+    }
+    IEnumerator TextingCoroutine(TextMeshProUGUI tmp, string Text, float speed)
+    {
+        string c = "";
+        for (float i = 0; i < Text.Length; i++)
+        {
+            c += Text[(int)i];
+            SoundManager.instance.SetAudio(TypingSound,SoundManager.SoundState.SFX,false);
+            tmp.text = c;
+            yield return new WaitForSeconds(speed);
+        }
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.instance.isGame)
         {
             Escape = !Escape;
             if (Escape)

@@ -24,6 +24,7 @@ public class EnemyBase : MonoBehaviour
     public float MaxHP; //최대 체력
 
     public float damage; //공격력
+    public float AttackRange; //사거리
 
     protected GameObject Bar; //enemyUIBar
 
@@ -31,17 +32,15 @@ public class EnemyBase : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         nav = GetComponent<NavMeshAgent>();
+        target = SceneManager.instance.FireMod ?
+            SpawnManager.instance.player.transform
+            : target = SpawnManager.instance.Ronald.transform;
     }
     protected virtual void Start()
     {
         anim.speed = nav.speed;
-        if (SceneManager.instance.FireMod)
+        if (!SceneManager.instance.FireMod)
         {
-            target = SpawnManager.instance.player.transform;
-        }
-        else
-        {
-            target = SpawnManager.instance.Ronald.transform;
             InitWeak();
             limit = limit * (1 / SpawnManager.instance.hardValue[SceneManager.instance.StageNum]);
             nav.SetDestination(target.position);
@@ -68,7 +67,7 @@ public class EnemyBase : MonoBehaviour
         {
             if (SceneManager.instance.FireMod)
             {
-                nav.SetDestination(target.position);
+                Movement();
             }
             else limit -= Time.deltaTime;
         }
@@ -77,7 +76,11 @@ public class EnemyBase : MonoBehaviour
             Instantiate(DeathEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        if (limit <= 0 || Vector3.Distance(transform.position, target.position) <= 2f) isFailed();
+        if (limit <= 0 || Vector3.Distance(transform.position, target.position) <= AttackRange) isFailed();
+    }
+    protected virtual void Movement()
+    {
+        nav.SetDestination(target.position);
     }
     protected virtual void isFailed()
     {
@@ -87,16 +90,20 @@ public class EnemyBase : MonoBehaviour
         }
         else
         {
-            SpawnManager.instance.player.Damage();
-            Destroy(gameObject);
+            Failed();
         }
+    }
+    protected virtual void Failed()
+    {
+        SpawnManager.instance.player.Damage();
+        Destroy(gameObject);
     }
     public void Damage(float damage, SpawnManager.Weakness Weaked)
     {
         if (SceneManager.instance.FireMod)
         {
             HP -= damage;
-            if(HP <= 0) WeakOut();
+            if (HP <= 0) WeakOut();
         }
         else
         {
@@ -108,7 +115,7 @@ public class EnemyBase : MonoBehaviour
     protected virtual void WeakOut()
     {
         UIManager.instance.Score += Score;
-        foreach (var score in UIManager.instance.ScoreText) 
+        foreach (var score in UIManager.instance.ScoreText)
             score.text = string.Format("{0:N0}", UIManager.instance.Score);
     }
     protected virtual bool isWeak(SpawnManager.Weakness value)

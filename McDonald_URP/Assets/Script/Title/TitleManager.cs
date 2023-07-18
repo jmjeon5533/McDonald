@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.AI;
+using TMPro;
 
 public class TitleManager : MonoBehaviour
 {
@@ -23,14 +24,37 @@ public class TitleManager : MonoBehaviour
     private bool isIntro = false; //인트로 유무
     [SerializeField] GameObject[] IntroEnemy; //인트로에 등장할 적
     [SerializeField] GameObject map; //인트로용 맵
+
+    [SerializeField] Button FireModButton; //모드 전환 버튼
+    [SerializeField] Image FireModImage; //모드 선택 이미지
+    [SerializeField] Sprite[] FireModSprite = new Sprite[2]; //모드 선택 유무 스프라이트
+    [SerializeField] TextMeshProUGUI FireModText, FireModExplain; //이름, 설명
+    [SerializeField] Button IntroSkipButton; //인트로 스킵 버튼
     void Start()
     {
         var s = SoundManager.instance;
+        var Scm = SceneManager.instance;
         map.GetComponent<NavMeshSurface>().RemoveData();
         map.GetComponent<NavMeshSurface>().BuildNavMesh();
 
         SceneManager.instance.isGame = false;
 
+        FireModButton.onClick.AddListener(() =>
+        {
+            Scm.FireMod = !Scm.FireMod;
+            FireModImage.sprite = Scm.FireMod ? FireModSprite[0] : FireModSprite[1];
+            InitText();
+            SoundManager.instance.SetAudio(Scm.ClickSound,
+                SoundManager.SoundState.SFX, false);
+        });
+        IntroSkipButton.onClick.AddListener(() =>
+        {
+            SceneManager.instance.StageNum = 0;
+            SceneManager.instance.SceneLoad(1);
+            SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
+                SoundManager.SoundState.SFX, false);
+        });
+        IntroSkipButton.gameObject.SetActive(false);
         for (int i = 0; i < IntroEnemy.Length; i++)
         {
             IntroEnemy[i].SetActive(false);
@@ -49,7 +73,7 @@ public class TitleManager : MonoBehaviour
             var index = i;
             StageButton[index].onClick.AddListener(() =>
             {
-                if(index < 3) SceneManager.instance.StageLoad(index);
+                if (index < 3) SceneManager.instance.StageLoad(index);
                 SoundManager.instance.SetAudio(SceneManager.instance.ClickSound,
                     SoundManager.SoundState.SFX, false);
             });
@@ -83,10 +107,13 @@ public class TitleManager : MonoBehaviour
                     SoundManager.SoundState.SFX, false);
             });
         }
+
+        InitText();
     }
     IEnumerator Intro()
     {
         yield return StartCoroutine(SceneManager.instance.FadeOut());
+        IntroSkipButton.gameObject.SetActive(true);
         for (int i = 0; i < IntroEnemy.Length; i++)
         {
             IntroEnemy[i].SetActive(true);
@@ -114,16 +141,26 @@ public class TitleManager : MonoBehaviour
         cam.eulerAngles = new Vector3(30, 180);
         for (int i = 0; i < IntroEnemy.Length; i++)
         {
-            IntroEnemy[i].GetComponent<NavMeshAgent>().SetDestination(new Vector3(0, 0, -3));
+            var nav = IntroEnemy[i].GetComponent<NavMeshAgent>();
+            IntroEnemy[i].GetComponent<Animator>().speed = nav.speed;
+            nav.SetDestination(new Vector3(0, 0, -3));
         }
         yield return new WaitForSeconds(3);
         SceneManager.instance.StageNum = 0;
         SceneManager.instance.SceneLoad(1);
         print("Complete!");
-
+        IntroSkipButton.gameObject.SetActive(false);
+    }
+    public void InitText()
+    {
+        FireModText.text = SceneManager.instance.FireMod ? "난사 모드" : "약점 모드";
+        FireModExplain.text
+            = SceneManager.instance.FireMod ? "약점 대신 체력을 깎는 사격 중심 모드입니다." :
+                "약점을 깎아 적을 처리하는 순발력 중심 모드입니다.";
     }
     void Update()
     {
+        FireModButton.gameObject.SetActive(!SceneManager.instance.isGame);
         if (!isIntro)
         {
             CamArm.Rotate(new Vector3(0, CamRotSpeed, 0) * Time.deltaTime);

@@ -57,7 +57,7 @@ public class BossSpriteBar : MonoBehaviour
 
             HPBar.size = new Vector2((bossBase.HP / bossBase.MaxHP) * 4.6f, HPBar.size.y);
 
-            transform.position = Target.position + new Vector3(0, 2, 0);
+            transform.position = Target.position + new Vector3(0, 4, 0);
         }
 
     }
