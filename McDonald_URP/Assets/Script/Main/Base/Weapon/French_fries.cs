@@ -30,7 +30,7 @@ public class French_fries : WeaponBase
                     SpawnManager.instance.player.cam.eulerAngles.x,player.eulerAngles.y,0)));
 
             BulletBase bulletMovement = bullet.GetComponent<BulletBase>();
-            bulletMovement.Damage = Damage;
+            bulletMovement.Damage = Damage + (int)(Mathf.InverseLerp(60, 45, cam.fieldOfView) * 10);
             bulletMovement.MoveSpeed = BulletSpeed + ((1 - CamFieldLerp) * 50);
             bulletMovement.dir = direction;
         }
@@ -44,10 +44,10 @@ public class French_fries : WeaponBase
         WeaponPos.localPosition
             = new Vector3(WeaponPos.localPosition.x,
                 -0.254f, Mathf.Lerp(WeaponPos.localPosition.z, -0.061f, 0.2f));
-
+        
         CamFieldValue = Input.GetMouseButton(1) ? 45 : 60;
     }
-    protected override void FieldSet()
+    public override void FieldSet()
     {
         base.FieldSet();
         CamFieldLerp = Mathf.InverseLerp(45, 60, cam.fieldOfView);

@@ -107,7 +107,7 @@ public class EnemyBase : MonoBehaviour
         }
         else
         {
-            if (!isWeak(Weaked)) limit -= damage;
+            if (!isWeak(Weaked)) limit -= (damage/10);
             else SearchWeak(Weaked);
             if (Weak.Count <= 0) WeakOut();
         }

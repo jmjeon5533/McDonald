@@ -92,7 +92,7 @@ MonoBehaviour:
   Ammo: 12
   megazine: 36
   maxAmmo: 12
-  Damage: 40
+  Damage: 30
   ReloadTime: 1.5
   isReload: 0
   AttackTime: 0.8

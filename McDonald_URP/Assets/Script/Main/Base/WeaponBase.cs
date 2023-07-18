@@ -34,6 +34,7 @@ public abstract class WeaponBase : MonoBehaviour
     void Awake()
     {
         SpawnManager.instance.player.WeaponImage.Add(WeaponImage);
+        cam = Camera.main.GetComponent<Camera>();
     }
     protected virtual void Start()
     {
@@ -41,7 +42,6 @@ public abstract class WeaponBase : MonoBehaviour
         transform.localPosition = new Vector3(0, 0, 0);
         transform.localEulerAngles = new Vector3(0, 0, 0);
         weaponArm = player.GetComponent<FirstPersonController>().WeaponArm;
-        cam = Camera.main.GetComponent<Camera>();
         cam.fieldOfView = 60;
         Weaponloc = WeaponPos.localPosition;
     }
@@ -61,7 +61,7 @@ public abstract class WeaponBase : MonoBehaviour
             FieldSet();
         }
     }
-    protected virtual void FieldSet()
+    public virtual void FieldSet()
     {
         cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, CamFieldValue, 15 * Time.deltaTime);
     }

@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Boss1 : EnemyBase
 {
-    public bool isAttack;
-    public float AttackSpeed;
+    public bool isSkill;
+    public float SkillSpeed;
     [SerializeField] GameObject RangeObj;
+    [SerializeField] GameObject SkillParticle;
+    [SerializeField] Transform particlePivot;
+    [SerializeField] float SkillRange;
     protected override void Start()
     {
         Bar = Instantiate(SpawnManager.instance.BossBarPrefab, transform.position, Quaternion.identity);
@@ -19,7 +22,7 @@ public class Boss1 : EnemyBase
         else
         {
             nav.speed = nav.speed * 3;
-            HP *= 50;
+            HP = HP * 200;
         }
 
         if (!SceneManager.instance.FireMod)
@@ -51,13 +54,13 @@ public class Boss1 : EnemyBase
     }
     protected override void Movement()
     {
-        if (!isAttack)
+        if (!isSkill)
         {
             if (Vector3.Distance(transform.position, target.position) <= 20)
             {
-                isAttack = true;
+                isSkill = true;
                 nav.ResetPath();
-                StartCoroutine(Attack());
+                StartCoroutine(Skill());
             }
             else
             {
@@ -65,26 +68,44 @@ public class Boss1 : EnemyBase
             }
         }
     }
-    IEnumerator Attack()
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireSphere(transform.position + new Vector3(0,2,1),SkillRange);    
+    }
+    IEnumerator Skill()
     {
         Vector3 TargetDir = (target.position - transform.position);
         RangeObj.SetActive(true);
         transform.eulerAngles
             = new Vector3(0, Mathf.Atan2(TargetDir.x, TargetDir.z) * Mathf.Rad2Deg, 0);
         var mypos = transform.position;
-        var pos = new Vector3(target.position.x,transform.position.y,target.position.z);
+        var pos = new Vector3(target.position.x, transform.position.y, target.position.z);
         yield return new WaitForSeconds(1);
         RangeObj.SetActive(false);
         nav.enabled = false;
         print($"{mypos} : {pos}");
-        while(Vector3.Distance(transform.position,pos) >= 0.1f)
+        while (Vector3.Distance(transform.position, pos) >= 0.1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position,pos,AttackSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, pos, SkillSpeed * Time.deltaTime);
+            Collider[] colliders = Physics.OverlapSphere(transform.position + new Vector3(0,2,1), SkillRange);
+
+            print("a");
+            // 충돌한 콜라이더를 처리하는 로직 작성
+            foreach (Collider collider in colliders)
+            {
+                print("b");
+                // 충돌한 콜라이더에 대한 처리 코드 작성
+                if (collider.CompareTag("Player"))
+                {
+                    collider.GetComponent<FirstPersonController>().Damage(damage);
+                }
+            }
+            print("c");
             yield return null;
         }
+        Instantiate(SkillParticle, particlePivot.position, Quaternion.identity);
         nav.enabled = true;
         yield return new WaitForSeconds(2);
-        isAttack = false;
+        isSkill = false;
     }
     protected override bool isWeak(SpawnManager.Weakness value)
     {
